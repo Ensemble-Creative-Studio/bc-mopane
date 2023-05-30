@@ -2,26 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer utilities {
+  .h-screen {
+    height: 100svh;
+  }
+  .h-120{
+    height: 120svh;
+    height: 120vh;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  }
+  .padding-vh-mobile{
+    padding-top: 25vh;
+    padding-bottom: 20vh;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
+@font-face {
+  font-family: "futura";
+  src: local("futura"),
+    url("../public/font/FuturaPTBook.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "ESFace";
+  src: local("futura"),
+    url("../public/font/ESFace-ExtraLight-Trial.otf") format("opentype");
+  font-weight: 400;
+}
+.ESFace {
+  font-family: "ESFace";
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+header {
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    180deg,
+    rgba(0, 0, 0, 0.72) -60%,
+    rgba(0, 0, 0, 0) 95.67%
+  );
+}
+a,
+p {
+  font-family: futura;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "ESFace";
+}
+.progress-bar {
+  background: rgba(252, 251, 248, 0.3);
+  height: 2px;
+}
+.transitionVideoInstrumentText {
+  transition: all 0.6s;
+}
+.progress {
+  background: #fcfbf8;
+  height: 1px;
+
+}
+.videoHero {
+  transition: opacity 0.5s;
+}
+
+.edition {
+  background: linear-gradient(180deg, #000000 0%, #1a1a19 100%);
+}
+
+.backgroundLine::before,
+.backgroundLine::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(#32312f 1px, transparent 1px);
+  background-size: 100% 35px;
+  z-index: 0;
+}
+.backgroundLine div {
+  z-index: 2;
+}
+.backgroundLine::after {
+  top: 46px;
+  height: 100%;
+}
+
+.instrument1 {
+  top: -23px;
+}
+.instrument2 {
+  top: 15px;
+}
+.instrument3 {
+  top: -5px;
+}
+
+.heightCustom{
+  height: 200%;
+  max-width: 200%;
+}
+.width-auto{
+  width: auto !important;
+}
+.keen-slider__slide.active{
+  opacity: 1;
 }

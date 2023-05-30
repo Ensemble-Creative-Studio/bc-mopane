@@ -1,0 +1,119 @@
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+export default function Edition({ editionData }) {
+  const editionContainerRef = useRef(null);
+  const contentRefs = useRef([]);
+  const animatedOpacityRefs = useRef([]);
+  const defaultOpacityRefs = useRef([]);
+
+  const renderText = (textArray, index) => {
+    return (
+      <div ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
+        {textArray.map((textItem, i) => {
+          if (textItem._type === "span") {
+            if (textItem.marks.includes("strong")) {
+              return (
+                <span
+                  ref={(ref) => animatedOpacityRefs.current.push(ref)}
+                  className="animatedOpacity font"
+                  key={textItem._key}
+                >
+                  {textItem.text}
+                </span>
+              );
+            }
+            return (
+              <span
+                ref={(ref) => defaultOpacityRefs.current.push(ref)}
+                key={textItem._key}
+              >
+                {textItem.text}
+              </span>
+            );
+          }
+          return null;
+        })}
+      </div>
+    );
+  };
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      editionData[0].editionText.map((block, i) => {
+        const editionContainer = editionContainerRef.current;
+
+        ScrollTrigger.create({
+          trigger: editionContainer,
+          start: "top top",
+          pin: true,
+          end: "bottom",
+          pinSpacing: true,
+          id: `panel-${i}`,
+        });
+
+        gsap.to(
+          [animatedOpacityRefs.current[1], animatedOpacityRefs.current[2]],
+          {
+            opacity: 0.3,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: editionContainer,
+              start: "top top",
+              end: "300px top",
+              markers: true
+            },
+          }
+        );
+
+        gsap.to(
+          [animatedOpacityRefs.current[0], animatedOpacityRefs.current[2]],
+          {
+            opacity: 0.3,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: editionContainer,
+              start: "20% top",
+              end: "300px top",
+              markers: true
+            },
+          }
+        );
+
+        defaultOpacityRefs.current.forEach((ref) => {
+          gsap.to(ref, {
+            opacity: 0.3,
+            duration: 0.5,
+            ease: "Power2.easeOut",
+            scrollTrigger: {
+              trigger: editionContainer,
+              start: "top top", // adjust this to change when the opacity begins to change
+              end: "10px top",
+
+              // scrub:true,
+            },
+          });
+        });
+      });
+    });
+
+    return () => ctx.revert(); // Cleanup the GSAP context
+  }, [editionData]);
+
+  return (
+    <div ref={editionContainerRef}>
+      <div className="flex items-center h-screen edition text-28px ">
+        <div className="relative backgroundLine overflow-hidden text-white ESFace grid grid-cols-6 gap-6 px-6">
+          {editionData[0].editionText.map((block, index) => (
+            <div className="col-start-2 col-end-7" key={block._key}>
+              {renderText(block.children, index)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

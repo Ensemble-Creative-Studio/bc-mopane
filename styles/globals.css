@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "TheFutur";
+  src: local("TheFutur"), url("../public/font/TheFuture.woff2") format("woff2");
+  font-weight: 400;
+} */
+html {
+  font-size: 62.5%;
+  background-color: #fff;
+  scroll-behavior: smooth;
+  
+  transform-style: flat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
