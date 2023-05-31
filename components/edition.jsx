@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import legende from "../public/instruments/LEGENDE.png";
 import r13 from "../public/instruments/R13.png";
 import { getEdition } from "../sanity/sanity-util"
@@ -15,6 +16,8 @@ export default function Edition() {
     const editionContainerRef = useRef(null);
     const [mounted, setMounted] = useState(false);
 =======
+=======
+>>>>>>> parent of 752811c (change name of video)
 =======
 >>>>>>> parent of 752811c (change name of video)
 import legende from "../public/instruments/legende.png";
