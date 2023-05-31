@@ -4,16 +4,17 @@
 
 @layer utilities {
   .h-screen {
-    height: 100vh;
+    height: 100svh;
+  }
+  .h-120{
+    height: 120svh;
+    height: 120vh;
+
   }
   .h-almost-screen{
     height: 90vh;
   }
-  .h-120 {
-    height: 120svh;
-    height: 120vh;
-  }
-  .padding-vh-mobile {
+  .padding-vh-mobile{
     padding-top: 25vh;
     padding-bottom: 20vh;
   }
@@ -68,6 +69,7 @@ h5 {
 .progress {
   background: #fcfbf8;
   height: 1px;
+
 }
 .videoHero {
   transition: opacity 0.5s;
@@ -109,17 +111,16 @@ h5 {
   top: -5px;
 }
 
-.heightCustom {
+.heightCustom{
   height: 200%;
   max-width: 200%;
 }
-.width-auto {
+.width-auto{
   width: auto !important;
 }
-.keen-slider__slide.active {
+.keen-slider__slide.active{
   opacity: 1;
 }
-
 .slider {
   display: flex;
   min-width: 100%;

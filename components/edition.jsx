@@ -1,10 +1,11 @@
+"use client"
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
-import legende from "../public/instruments/legende.png";
-import r13 from "../public/instruments/r13.png";
+import legende from "../public/instruments/LEGENDE.png";
+import r13 from "../public/instruments/R13.png";
 
 export default function Edition({ editionData }) {
   const editionContainerRef = useRef(null);
@@ -59,7 +60,7 @@ export default function Edition({ editionData }) {
       trigger: editionContainer,
       start: "top top",
       pin: true,
-      end: "bottom+=1800px",
+      end: "bottom+=1200px",
       pinSpacing: true,
     });
 
@@ -68,7 +69,7 @@ export default function Edition({ editionData }) {
         trigger: editionContainer,
         scrub: false,
         start: "top top",
-        end: "bottom+=1800px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
+        end: "bottom+=1200px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
         onUpdate: (self) => {
           const progress = self.progress * 100;
           if (progress > 0 && progress < 5) {

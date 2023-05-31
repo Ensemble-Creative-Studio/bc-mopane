@@ -11,18 +11,18 @@ export default async function Footer() {
 
 
   return (
-    <div className="bg-soft-black ">
-      <div className="page__link">
+    <div className="bg-soft-black w-full flex flex-col justify-center h-52 fixed bottom-0 z-10">
+      <div className="page__link flex flex-col justify-center">
         {/* Render each page with its name and URL */}
         {pageData.map((page) => (
-          <div key={page._id}>
-            <Link className="text-mid-grey text-14px" href={page.slug.current}>
+          <div className="text-center pb-4 " key={page._id}>
+            <Link className="text-mid-grey text-14px  " href={page.slug.current}>
             {page.titre}
             </Link>
           </div>
         ))}
       </div>
-      <p className="text-mid-grey text-14px">© 2023 Groupe Buffet Crampon</p>
+      <p className="text-mid-grey text-14px text-center pt-8">© 2023 Groupe Buffet Crampon</p>
     </div>
   );
 }

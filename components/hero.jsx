@@ -1,32 +1,13 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { getHero } from "../sanity/sanity-util";
+"use client"
 
-export function Hero() {
-  const [heroData, setHeroData] = useState(null);
-  const [mounted, setMounted] = useState(false);
+import { useState, useEffect, useRef } from "react";
+
+export default function Hero({ heroData }) {
+  // console.log(heroData);
+
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [progresses, setProgresses] = useState([]);
   const videoRefs = useRef([]);
-
-  useEffect(() => {
-    async function fetchHeroData() {
-      const data = await getHero();
-      setHeroData(data);
-      setMounted(true);
-    }
-    fetchHeroData();
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      const videoElement = videoRefs.current[currentVideoIndex];
-      if (videoElement) {
-        videoElement.play();
-        console.log("mounted");
-      }
-    }
-  }, []); // Empty dependency array to play the first video on load
 
   const handleVideoEnded = () => {
     setTimeout(() => {
@@ -42,18 +23,21 @@ export function Hero() {
   };
 
   const handleInstrumentClick = (index) => {
+    // Stop the current video and reset its time
     const currentVideoElement = videoRefs.current[currentVideoIndex];
     if (currentVideoElement) {
       currentVideoElement.pause();
       currentVideoElement.currentTime = 0;
     }
 
+    // Reset the progress bar for the current video
     setProgresses((prevProgresses) => {
       const newProgresses = [...prevProgresses];
       newProgresses[currentVideoIndex] = 0;
       return newProgresses;
     });
 
+    // Start playing the new video
     setCurrentVideoIndex(index);
   };
 
@@ -76,64 +60,60 @@ export function Hero() {
     }
   }, [currentVideoIndex]);
 
-  if (!heroData) {
-    return null; // Render null or a loading indicator while fetching data
-  }
-
   return (
     <div>
       <div className="h-screen relative">
-        <>
-          <h1 className="text-white text-36px absolute bottom-48 px-6">
-            {heroData[0].herotext}
-          </h1>
-          {heroData[0].instruments.map((instrument, index) => (
-            <video
-              className="object-cover h-full absolute top-0 left-0 -z-10 videoHero"
-              key={instrument._key}
-              src={instrument.url}
-              muted
-              onEnded={handleVideoEnded}
-              onTimeUpdate={() => handleTimeUpdate(index)}
-              ref={(el) => (videoRefs.current[index] = el)}
-              style={{
-                opacity: index === currentVideoIndex ? 1 : 0,
-                pointerEvents: index === currentVideoIndex ? "auto" : "none",
-              }}
-            />
-          ))}
-          <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white">
+        {heroData && (
+          <>
+            <h1 className= "  text-white text-36px absolute bottom-48 px-6">
+              {heroData[0].herotext}
+            </h1>
             {heroData[0].instruments.map((instrument, index) => (
-              <div
-                className="transitionVideoInstrumentText col-span-2"
+              <video
+                className="object-cover h-full absolute top-0 left-0 -z-10 videoHero"
                 key={instrument._key}
-                style={{ opacity: index === currentVideoIndex ? 1 : 0.5 }}
-              >
-                <p
-                  className="pb-2"
-                  onClick={() => handleInstrumentClick(index)}
-                >
-                  {instrument.instrument}
-                </p>
-                <div className="progress-bar" style={{ width: "100%" }}>
-                  <div
-                    className="progress"
-                    style={{
-                      width: `${progresses[index] || 0}%`,
-                      transition:
-                        progresses[index] === 100 || progresses[index] === 0
-                          ? "none"
-                          : "width 0.5s",
-                    }}
-                  ></div>
-                </div>
-              </div>
+                src={instrument.url}
+                muted
+                onEnded={handleVideoEnded}
+                onTimeUpdate={() => handleTimeUpdate(index)}
+                ref={(el) => (videoRefs.current[index] = el)}
+                style={{
+                  opacity: index === currentVideoIndex ? 1 : 0,
+                  pointerEvents: index === currentVideoIndex ? "auto" : "none",
+                }}
+              />
             ))}
-          </div>
-        </>
+            <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white ">
+              {heroData[0].instruments.map((instrument, index) => (
+                <div
+                  className="transitionVideoInstrumentText col-span-2"
+                  key={instrument._key}
+                  style={{ opacity: index === currentVideoIndex ? 1 : 0.5 }}
+                >
+                  <p
+                    className="pb-2"
+                    onClick={() => handleInstrumentClick(index)}
+                  >
+                    {instrument.instrument}
+                  </p>
+                  <div className="progress-bar" style={{ width: "100%" }}>
+                    <div
+                      className="progress"
+                      style={{
+                        width: `${progresses[index] || 0}%`,
+                        transition:
+                          progresses[index] === 100 || progresses[index] === 0
+                            ? "none"
+                            : "width 0.5s",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 }
-
-export default Hero;

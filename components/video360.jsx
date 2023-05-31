@@ -1,10 +1,10 @@
+"use client"
+
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import video3D from "../public/videos/3D.mp4";
-import legende from "../public/instruments/legende.png";
-import r13 from "../public/instruments/r13.png";
+
 
 export default function Video({ video360Data }) {
   const editionContainerRef = useRef(null);
