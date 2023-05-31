@@ -1,18 +1,31 @@
-import React, { useLayoutEffect, useRef } from "react";
+'use client'
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-export default function Edition({ sonData }) {
+import { getSon } from "../sanity/sanity-util"
+export default function Edition() {
+  const [sonData, setSonData] = useState(null);
   const sonContainerRef = useRef(null);
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
   const defaultOpacityRefs = useRef([]);
   const videoRefs = useRef([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    async function fetchSonData() {
+      const data = await getSon();
+      setSonData(data);
+      setMounted(true);
+    }
+    fetchSonData();
+  }, []);
+
   const playVideo = (video) => {
     // video.currentTime = 0;
     video.play();
-    console.log('started')
+   
   };
   const resetVideo = (video) => {
     video.currentTime = 0;
@@ -20,6 +33,7 @@ export default function Edition({ sonData }) {
   };
   
   const renderText = (textArray, index) => {
+    
     return (
       <div ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
         {textArray.map((textItem, i) => {
@@ -50,6 +64,7 @@ export default function Edition({ sonData }) {
     );
   };
   useLayoutEffect(() => {
+    if (mounted && sonData) {
     gsap.registerPlugin(ScrollTrigger);
 
     const editionContainer = sonContainerRef.current;
@@ -209,7 +224,11 @@ export default function Edition({ sonData }) {
       gsap.killTweensOf(animatedOpacityRefs.current);
       gsap.killTweensOf(defaultOpacityRefs.current);
     };
-  }, [sonData]);
+  }}, [mounted, sonData]);
+
+  if (!sonData) {
+    return null;
+  }
 
   return (
     <div ref={sonContainerRef}>

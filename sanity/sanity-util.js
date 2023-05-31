@@ -32,3 +32,9 @@ export async function getPedigre(lang) {
 export async function getShowroom(lang) {
   return client.fetch(groq`*[_type == 'showroom']`);
 }
+export async function getFooter(lang) {
+  return client.fetch(groq`*[_type == 'footer']`);
+}
+export async function getPage(lang) {
+  return client.fetch(groq`*[_type == 'pageFooter']`);
+}

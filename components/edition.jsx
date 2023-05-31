@@ -1,19 +1,32 @@
-import React, { useLayoutEffect, useRef } from "react";
+"use client";
+
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
 import legende from "../public/instruments/LEGENDE.png";
 import r13 from "../public/instruments/R13.png";
-
-export default function Edition({ editionData }) {
-  const editionContainerRef = useRef(null);
+import { getEdition } from "../sanity/sanity-util"
+export default function Edition() {
+  const [editionData, setEditionData] = useState(null);
+    const editionContainerRef = useRef(null);
+    const [mounted, setMounted] = useState(false);
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
   const defaultOpacityRefs = useRef([]);
   const instrument1Ref = useRef(null);
   const instrument2Ref = useRef(null);
   const instrument3Ref = useRef(null);
+
+  useEffect(() => {
+    async function fetchEditionData() {
+      const data = await getEdition();
+      setEditionData(data);
+      setMounted(true);
+    }
+    fetchEditionData();
+  }, []);
 
   const renderText = (textArray, index) => {
     return (
@@ -46,6 +59,8 @@ export default function Edition({ editionData }) {
     );
   };
   useLayoutEffect(() => {
+    if (mounted && editionData) {
+      
     gsap.registerPlugin(ScrollTrigger);
 
     const editionContainer = editionContainerRef.current;
@@ -149,7 +164,11 @@ export default function Edition({ editionData }) {
       gsap.killTweensOf(animatedOpacityRefs.current);
       gsap.killTweensOf(defaultOpacityRefs.current);
     };
-  }, [editionData]);
+  }
+}, [mounted, editionData]);
+  if (!editionData) {
+    return null; // Render null or a loading indicator while fetching data
+  }
 
   return (
     <div ref={editionContainerRef}>

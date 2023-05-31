@@ -4,14 +4,16 @@
 
 @layer utilities {
   .h-screen {
-    height: 100svh;
+    height: 100vh;
   }
-  .h-120{
+  .h-almost-screen{
+    height: 90vh;
+  }
+  .h-120 {
     height: 120svh;
     height: 120vh;
-
   }
-  .padding-vh-mobile{
+  .padding-vh-mobile {
     padding-top: 25vh;
     padding-bottom: 20vh;
   }
@@ -66,7 +68,6 @@ h5 {
 .progress {
   background: #fcfbf8;
   height: 1px;
-
 }
 .videoHero {
   transition: opacity 0.5s;
@@ -108,13 +109,35 @@ h5 {
   top: -5px;
 }
 
-.heightCustom{
+.heightCustom {
   height: 200%;
   max-width: 200%;
 }
-.width-auto{
+.width-auto {
   width: auto !important;
 }
-.keen-slider__slide.active{
+.keen-slider__slide.active {
   opacity: 1;
+}
+
+.slider {
+  display: flex;
+  min-width: 100%;
+  min-height: 200px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overflow-y: hidden;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__container {
+  /* background-color: #ecf0f1; */
+  min-width: 80vw;
+}
+
+.radius{
+  border-radius: 4%;
+  aspect-ratio: 1.26;
 }
