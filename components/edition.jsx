@@ -3,8 +3,8 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
-import legende from "../public/instruments/LEGENDE.png";
-import r13 from "../public/instruments/R13.png";
+import legende from "../public/instruments/legende.png";
+import r13 from "../public/instruments/r13.png";
 
 export default function Edition({ editionData }) {
   const editionContainerRef = useRef(null);
