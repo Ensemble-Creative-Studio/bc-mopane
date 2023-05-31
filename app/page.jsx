@@ -25,12 +25,12 @@ import {getShowroom} from "../sanity/sanity-util";
 export default async  function Home() {
 
   const lang = "fr"; // Set lang variable based on browser language, default to "fr" if not available
-  // const heroData = await getHero();
-  //  const editionData = await getEdition();
-  // const boisData = await getBois();
-  // const sonData = await getSon();
-  // const video360Data = await getVideo();
-  // const nuancesData = await getNuances();
+  const heroData = await getHero();
+   const editionData = await getEdition();
+  const boisData = await getBois();
+  const sonData = await getSon();
+  const video360Data = await getVideo();
+  const nuancesData = await getNuances();
   const specificationData = await getSpecification();
   const pedigreData = await getPedigre();
   const showroomData = await getShowroom();
@@ -39,12 +39,12 @@ export default async  function Home() {
     <div className="relative z-20 mb-52" >
     
       <Header />
-      {/* <Hero heroData={heroData} />
+      <Hero heroData={heroData} />
       <Edition editionData={editionData} />
       <Bois boisData={boisData} />
       <Son sonData={sonData} />
       <Video video360Data={video360Data} />
-      <Nuances nuancesData={nuancesData} /> */}
+      <Nuances nuancesData={nuancesData} />
       <Specifications specificationData={specificationData} />
       <Pedigre pedigreData={pedigreData}></Pedigre>
       <Showroom showroomData={showroomData}></Showroom>
