@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
+<<<<<<< HEAD
 import legende from "../public/instruments/LEGENDE.png";
 import r13 from "../public/instruments/R13.png";
 import { getEdition } from "../sanity/sanity-util"
@@ -12,6 +13,13 @@ export default function Edition() {
   const [editionData, setEditionData] = useState(null);
     const editionContainerRef = useRef(null);
     const [mounted, setMounted] = useState(false);
+=======
+import legende from "../public/instruments/legende.png";
+import r13 from "../public/instruments/r13.png";
+
+export default function Edition({ editionData }) {
+  const editionContainerRef = useRef(null);
+>>>>>>> parent of 752811c (change name of video)
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
   const defaultOpacityRefs = useRef([]);
