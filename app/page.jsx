@@ -37,7 +37,7 @@ export default async  function Home() {
   return (
     <>
     <div className="relative z-20 mb-52" >
-    
+    <div className="background"></div>
       <Header />
       <Hero heroData={heroData} />
       <Edition editionData={editionData} />

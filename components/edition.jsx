@@ -64,6 +64,8 @@ export default function Edition({ editionData }) {
       pinSpacing: true,
     });
 
+  
+
     gsap.to(animatedOpacityRefs.current, {
       scrollTrigger: {
         trigger: editionContainer,
@@ -75,7 +77,7 @@ export default function Edition({ editionData }) {
           if (progress > 0 && progress < 5) {
             gsap.to(
               [...defaultOpacityRefs.current, ...animatedOpacityRefs.current],
-              { opacity: 1, duration: 0.5 }
+              { color: '  #FCFBF8', duration: 0.5 }
             );
             gsap.to(
               [
@@ -83,7 +85,7 @@ export default function Edition({ editionData }) {
                 instrument2Ref.current,
                 instrument3Ref.current,
               ],
-              { opacity: 0, duration: 0.5 }
+              { opacity:'0', duration: 0.5 }
             );
           } else if (progress > 5 && progress < 30) {
             gsap.to(animatedOpacityRefs.current[0], {
@@ -96,14 +98,14 @@ export default function Edition({ editionData }) {
                 animatedOpacityRefs.current[1],
                 animatedOpacityRefs.current[2],
               ],
-              { opacity: 0.3, duration: 0.5 }
+              { color: '    #726F6A', duration: 0.5 }
             );
-            gsap.to(instrument1Ref.current, { opacity: 1, duration: 0.5 });
-            gsap.to(instrument2Ref.current, { opacity: 0, duration: 0.5 });
-            gsap.to(instrument3Ref.current, { opacity: 0, duration: 0.5 });
+            gsap.to(instrument1Ref.current, {  opacity:'1',duration: 0.5 });
+            gsap.to(instrument2Ref.current, {  opacity:'0', duration: 0.5 });
+            gsap.to(instrument3Ref.current, {  opacity:'0',duration: 0.5 });
           } else if (progress > 30 && progress < 66) {
             gsap.to(animatedOpacityRefs.current[1], {
-              opacity: 1,
+              color: '  #FCFBF8',
               duration: 0.5,
             });
             gsap.to(
@@ -112,14 +114,14 @@ export default function Edition({ editionData }) {
                 animatedOpacityRefs.current[0],
                 animatedOpacityRefs.current[2],
               ],
-              { opacity: 0.3, duration: 0.5 }
+              {color: '    #726F6A', duration: 0.5 }
             );
-            gsap.to(instrument2Ref.current, { opacity: 1, duration: 0.5 });
-            gsap.to(instrument1Ref.current, { opacity: 0, duration: 0.5 });
-            gsap.to(instrument3Ref.current, { opacity: 0, duration: 0.5 });
+            gsap.to(instrument2Ref.current, {    opacity:'1', duration: 0.5 });
+            gsap.to(instrument1Ref.current, {  opacity:'0', duration: 0.5 });
+            gsap.to(instrument3Ref.current, { opacity:'0', duration: 0.5 });
           } else if (progress > 66 && progress < 98) {
             gsap.to(animatedOpacityRefs.current[2], {
-              opacity: 1,
+              color: '  #FCFBF8',
               duration: 0.5,
             });
             gsap.to(
@@ -128,15 +130,15 @@ export default function Edition({ editionData }) {
                 animatedOpacityRefs.current[1],
                 animatedOpacityRefs.current[0],
               ],
-              { opacity: 0.3, duration: 0.5 }
+              { color: '    #726F6A', duration: 0.5 }
             );
-            gsap.to(instrument3Ref.current, { opacity: 1, duration: 0.5 });
-            gsap.to(instrument2Ref.current, { opacity: 0, duration: 0.5 });
-            gsap.to(instrument1Ref.current, { opacity: 0, duration: 0.5 });
+            gsap.to(instrument3Ref.current, {    opacity:'1', duration: 0.5 });
+            gsap.to(instrument2Ref.current, { opacity:'0',duration: 0.5 });
+            gsap.to(instrument1Ref.current, {  opacity:'0', duration: 0.5 });
           } else if (progress == 100) {
             gsap.to(
               [...defaultOpacityRefs.current, ...animatedOpacityRefs.current],
-              { opacity: 1, duration: 0.5 }
+              { color: '  #FCFBF8', duration: 0.5 }
             );
             gsap.to(instrument3Ref.current, { opacity: 0, duration: 0.5 });
           }
