@@ -98,12 +98,12 @@ export default function Nuances({ nuancesData }) {
             </div>
           ))}
         </div>
-        <div ref={thumbnailRef} className="keen-slider thumbnail nuances md:flex md:col-start-8 md:col-end-13 md:pr-12 md:bottom-0 md:absolute">
+        <div ref={thumbnailRef} className="keen-slider thumbnail nuances md:flex md:col-start-8 md:col-end-13 md:pr-12 md:bottom-0 md:absolute md:py-12 md:-left-12 md:customOutline ">
           {nuancesData[0].slider.map((slide, index) => (
-            <div key={slide._key} className="keen-slider__slide">
+            <div key={slide._key} className="keen-slider__slide cursor-pointer  group ">
               {slide.mediaType === "image" && slide.image && (
                 <Image
-                className="object-cover h-full w-full"
+                className="object-cover h-full w-full  md:group-hover:scale-105 md:group-hover:outline-1 md:group-hover:outline md:group-hover:outline-white md:group-hover:-outline-offset-1 "
                   src={urlForImage(slide.image.asset._ref)}
                   alt="Details instruments"
                   width={300}
@@ -113,9 +113,9 @@ export default function Nuances({ nuancesData }) {
               {slide.mediaType === "video" && slide.video && (
                 <video
                   src={slide.video}
-                  className="object-cover h-full w-full"
+                  className="object-cover h-full w-full md:group-hover:scale-110" 
                   muted
-                  autoPlay
+                 
                   loop
                 />
               )}
@@ -123,7 +123,7 @@ export default function Nuances({ nuancesData }) {
           ))}
         </div>
         {loaded && instanceRef.current && (
-          <div className="navigation-controls flex items-center justify-center pt-6 pb-8  md:col-start-6 md:col-end-8 md:bottom-0 md:absolute">
+          <div className="navigation-controls flex items-center justify-center pt-6 pb-8  md:col-start-6 md:col-end-8 md:bottom-0 md:absolute md:w-full">
             <Arrow
               left
               onClick={(e) => e.stopPropagation() || instanceRef.current?.prev()}
@@ -150,7 +150,7 @@ function Arrow(props) {
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow h-10 w-10 ${props.left ? "arrow--left relative top-1" : "arrow--right relative -right-2"} ${disabeld}`}
+      className={`arrow h-10 w-10 md:hidden ${props.left ? "arrow--left relative top-1" : "arrow--right relative -right-2"} ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

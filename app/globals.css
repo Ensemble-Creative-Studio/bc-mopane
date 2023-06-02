@@ -21,6 +21,10 @@
   .widthoverlay{
     width: 450px;
   }
+  .customOutline{
+    width: 102% !important;
+    transform: translateX(2%);
+  }
 }
 @font-face {
   font-family: "futura";
@@ -234,6 +238,7 @@ h5 {
 .thumbnail.nuances {
   display: flex !important;
   position: absolute !important;
+  /* overflow: visible !important; */
 }
 .slider__container {
   /* background-color: #ecf0f1; */
