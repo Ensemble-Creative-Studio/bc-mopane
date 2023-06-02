@@ -148,7 +148,7 @@ export default function Video({ video360Data }) {
           </div>
         </div>
         <div className="relative z-10 pt-16  flex-1 font-extralight  ESFace text-28px md:text-64px md:col-start-8 md:col-end-13">
-          <h2 className="text-soft-white pb-6 pr-8 md:pb-12">{video360Data[0].titre}</h2>
+          <h2 className="text-soft-white pb-6 pr-8 md:pb-12 md:pr-20">{video360Data[0].titre}</h2>
           <div id="ed-face">
             {video360Data[0].bulletPoint.map((bullet, index) => (
               <p

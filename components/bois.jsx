@@ -123,7 +123,7 @@ export default function Bois({ boisData }) {
   return (
     <div ref={editionContainerRef} className="h-screen bg-soft-black md:min-h-screen md:h-auto md:pb-40">
       <div className="pt-36 text-soft-white px-6 pb-16 md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64 ">
-        <div className="flex flex-col md:col-start-2 md:col-end-8 ">
+        <div className="flex flex-col md:col-start-2 md:col-end-9 ">
           <p className="text-12px md:text-21px pb-3 uppercase">
             {boisData[0].boisTitre}
           </p>
