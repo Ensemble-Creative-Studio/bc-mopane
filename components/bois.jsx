@@ -56,7 +56,7 @@ export default function Bois({ boisData }) {
       ScrollTrigger.create({
         trigger: ref,
         start: "top center",
-        end: "bottom center",
+        end: "bottom+=80px center",
 
         onEnter: () => {
           animateTranslate(ref);
@@ -78,7 +78,8 @@ export default function Bois({ boisData }) {
       ScrollTrigger.create({
         trigger: ref,
         start: "top center",
-        end: "bottom center",
+        end: "bottom+=80px center",
+
         onEnter: () => {
           animatedOpacity(ref);
         },
@@ -97,7 +98,7 @@ export default function Bois({ boisData }) {
       ScrollTrigger.create({
         trigger: ref,
         start: "top center",
-        end: "bottom center",
+        end: "bottom+=80px center",
         onEnter: () => {
           animatedImageOpacity(ref);
         },

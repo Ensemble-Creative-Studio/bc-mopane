@@ -65,11 +65,11 @@ export default function Nuances({ nuancesData }) {
   return (
     <div>
     <div className="h-screen bg-soft-black pt-32 flex flex-col justify-between md:min-h-screen md:h-auto md:pt-60">
-      <div className="md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64">
+      <div className="md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-40">
         <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0">
           {nuancesData[0].titre}
         </h3>
-        <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 " >
+        <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 md:pt-16 " >
           {nuancesData[0].texte}
         </h5>
       </div>
@@ -98,7 +98,7 @@ export default function Nuances({ nuancesData }) {
             </div>
           ))}
         </div>
-        <div ref={thumbnailRef} className="keen-slider thumbnail nuances md:flex md:col-start-8 md:col-end-13 md:pr-12 md:bottom-0">
+        <div ref={thumbnailRef} className="keen-slider thumbnail nuances md:flex md:col-start-8 md:col-end-13 md:pr-12 md:bottom-0 md:absolute">
           {nuancesData[0].slider.map((slide, index) => (
             <div key={slide._key} className="keen-slider__slide">
               {slide.mediaType === "image" && slide.image && (
@@ -123,7 +123,7 @@ export default function Nuances({ nuancesData }) {
           ))}
         </div>
         {loaded && instanceRef.current && (
-          <div className="navigation-controls flex items-center justify-center pt-6 pb-8  md:col-start-6 md:col-end-8 md:bottom-0">
+          <div className="navigation-controls flex items-center justify-center pt-6 pb-8  md:col-start-6 md:col-end-8 md:bottom-0 md:absolute">
             <Arrow
               left
               onClick={(e) => e.stopPropagation() || instanceRef.current?.prev()}

@@ -92,7 +92,7 @@ h5 {
 }
 .progress {
   background: #fcfbf8;
-  height: 1px;
+  height: 2px;
 
 }
 .videoHero {
@@ -233,6 +233,7 @@ h5 {
   
 .thumbnail.nuances {
   display: flex !important;
+  position: absolute !important;
 }
 .slider__container {
   /* background-color: #ecf0f1; */

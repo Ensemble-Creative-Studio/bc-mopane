@@ -15,7 +15,7 @@ import Showroom from "../components/showroom";
 import Footer from "../components/footer";
 
 
-
+import { getHeader } from "../sanity/sanity-util";
 import { getHero } from "../sanity/sanity-util";
 import { getEdition } from "../sanity/sanity-util";
 import { getBois } from "../sanity/sanity-util";
@@ -29,6 +29,7 @@ import { getOverlay } from "../sanity/sanity-util";
 export default async  function Home() {
 
   const lang = "fr"; // Set lang variable based on browser language, default to "fr" if not available
+  const headerData = await getHeader()
   const heroData = await getHero();
    const editionData = await getEdition();
   const boisData = await getBois();
@@ -43,7 +44,7 @@ export default async  function Home() {
     <>
     <div className="relative z-20 mb-52 md:mb-40" >
     <div className="background"></div>
-      <Header />
+      <Header headerData={headerData} />
       <Overlay overlayData={overlayData} />
       <Hero heroData={heroData} />
       <Edition editionData={editionData} />

@@ -21,23 +21,29 @@ export default function Hero({ heroData }) {
   };
 
   const handleInstrumentClick = (index) => {
+    // Do nothing if the same video is clicked
+    if (currentVideoIndex === index) {
+      return;
+    }
+  
     // Stop the current video and reset its time
     const currentVideoElement = videoRefs.current[currentVideoIndex];
     if (currentVideoElement) {
       currentVideoElement.pause();
       currentVideoElement.currentTime = 0;
     }
-
+  
     // Reset the progress bar for the current video
     setProgresses((prevProgresses) => {
       const newProgresses = [...prevProgresses];
       newProgresses[currentVideoIndex] = 0;
       return newProgresses;
     });
-
+  
     // Start playing the new video
     setCurrentVideoIndex(index);
   };
+  
 
   const handleTimeUpdate = (index) => {
     const videoElement = videoRefs.current[index];
@@ -72,6 +78,7 @@ export default function Hero({ heroData }) {
                 key={instrument._key}
                 src={instrument.url}
                 muted
+                playsinline
                 onEnded={handleVideoEnded}
                 onTimeUpdate={() => handleTimeUpdate(index)}
                 ref={(el) => (videoRefs.current[index] = el)}
