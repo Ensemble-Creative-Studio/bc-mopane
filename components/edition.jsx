@@ -158,7 +158,7 @@ export default function Edition({ editionData }) {
   return (
     <div ref={editionContainerRef}>
       <div className="flex items-center h-screen edition text-28px md:text-64px ">
-        <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36">
+        <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
           {editionData[0].editionText.map((block, index) => (
             <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>
               {renderText(block.children, index)}

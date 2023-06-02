@@ -57,7 +57,7 @@ export default function Bois({ boisData }) {
         trigger: ref,
         start: "top center",
         end: "bottom center",
-  
+
         onEnter: () => {
           animateTranslate(ref);
         },
@@ -130,7 +130,7 @@ export default function Bois({ boisData }) {
           <h3 className="text-24px md:text-64px">{boisData[0].boisPhrase}</h3>
         </div>
       </div>
-      <div className="px-6 flex gap-14 flex-col md:gap-32">
+      <div className="px-6 flex gap-14 flex-col md:gap-32 md:px-0" >
         {boisData[0].bois.map((bois, index) => (
           <div
             ref={(ref) => {
@@ -140,12 +140,12 @@ export default function Bois({ boisData }) {
             key={index}
           >
             <div className="flex items-center gap-6 md:col-start-2 col-end-13 md:gap-56 " key={index}>
-              <div className="image-container w-20 h-20 md:h-72 md:w-72 ">
-                <Image
-                ref={(ref) => {
+              <div      ref={(ref) => {
                   imageOpacityRefs.current[index] = ref;
-                }}
-                  className="flex-1 h-full w-full object-cover md:opacity-0"
+                }} className="image-container w-20 h-20 md:h-full md:w-auto  md:opacity-0 ">
+                <Image
+           
+                  className="flex-1 h-full w-full object-contain md:h-72 md:w-72"
                   priority
                   src={images[index]}
                   alt="Logo Buffet Crampon"

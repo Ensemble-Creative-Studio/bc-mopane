@@ -81,7 +81,7 @@ export default function Hero({ heroData }) {
                 }}
               />
             ))}
-            <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white md:px-36 ">
+            <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white md:px-36 md:gap-12">
               {heroData[0].instruments.map((instrument, index) => (
                 <div
                   className="transitionVideoInstrumentText col-span-2"
