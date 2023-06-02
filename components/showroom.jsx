@@ -8,8 +8,8 @@ import arrow from "../public/arrow.svg";
 import { urlForImage } from "../sanity/lib/image";
 export default function Showroom({ showroomData }) {
   return (
-    <div className="h-almost-screen bg-mid-grey flex items-center px-6 ">
-      <div className="flex flex-col">
+    <div className="h-almost-screen bg-mid-grey flex items-center px-6 md:px-36 ">
+      <div className="flex flex-col md:flex-row-reverse">
         <div className="image__container">
           <Image
             className="radius object-cover h-auto w-full"
@@ -19,22 +19,25 @@ export default function Showroom({ showroomData }) {
             height={960}
           />
         </div>
-        <h3 className="text-28px text-soft-white pt-10">
+        <div>
+        <h3 className="text-28px text-soft-white pt-10 md:text-64px">
           {showroomData[0].titre}
         </h3>
         <Link
           href={showroomData[0].buttonUrl}
-          className="flex-1 md:hidden font-[450] text-16px text-soft-white pt-10 flex"
+          className="flex-1  font-[450] text-16px text-soft-white pt-10 flex md:text-21px items-center"
         >
           <p>{showroomData[0].buttonText}</p>
           <Image
-                    className="ml-2"
+                    className="ml-2 md:relative md:top-1"
                     src={arrow}
                     alt="Details instruments"
                     width={16}
                     height={16}
                   />
         </Link>
+        </div>
+    
       </div>
     </div>
   );

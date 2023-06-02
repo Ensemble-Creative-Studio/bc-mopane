@@ -41,10 +41,10 @@ export default async  function Home() {
   const overlayData = await getOverlay();
   return (
     <>
-    <div className="relative z-20 mb-52" >
+    <div className="relative z-20 mb-52 md:mb-40" >
     <div className="background"></div>
       <Header />
-      {/* <Overlay overlayData={overlayData} /> */}
+      <Overlay overlayData={overlayData} />
       <Hero heroData={heroData} />
       <Edition editionData={editionData} />
       <Bois boisData={boisData} />
@@ -53,7 +53,7 @@ export default async  function Home() {
       <Nuances nuancesData={nuancesData} />
       <Specifications specificationData={specificationData} />
       <Pedigre pedigreData={pedigreData}></Pedigre>
-      {/* <Showroom showroomData={showroomData}></Showroom> */}
+      <Showroom showroomData={showroomData}></Showroom>
 
   
     </div>

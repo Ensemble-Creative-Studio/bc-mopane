@@ -18,6 +18,9 @@
     padding-top: 25vh;
     padding-bottom: 20vh;
   }
+  .widthoverlay{
+    width: 450px;
+  }
 }
 @font-face {
   font-family: "futura";
