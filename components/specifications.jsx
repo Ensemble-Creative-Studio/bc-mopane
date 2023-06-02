@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
@@ -47,6 +47,9 @@ function ThumbnailPlugin(mainRef, detailsRef) {
 
 export default function Specifications({ specificationData }) {
   const [detailsOpacities, setDetailsOpacities] = useState([]);
+  const [detailsDisplay, setDetailsDisplay] = useState([]);
+  const [opacities, setOpacities] = React.useState([]);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -65,13 +68,18 @@ export default function Specifications({ specificationData }) {
   });
   const [detailsSliderRef, detailsInstanceRef] = useKeenSlider({
     initial: 0,
-drag:false,
+    slides: 3,
+    drag: false,
     detailsChanged(s) {
       const newOpacities = s.track.details.slides.map((slide) => slide.portion);
       setDetailsOpacities(newOpacities);
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
+      const newOpacities = slider.track.details.slides.map(
+        (slide) => slide.portion
+      );
+      setDetailsOpacities(newOpacities);
     },
     created() {
       setLoaded(true);
@@ -87,8 +95,6 @@ drag:false,
     [ThumbnailPlugin(instanceRef, detailsInstanceRef)]
   );
 
-  
-
   function scaleStyle(idx) {
     if (!details || !details.slides[idx]) return {};
     const slide = details.slides[idx];
@@ -100,6 +106,16 @@ drag:false,
     };
   }
 
+  function displayStyle(idx) {
+    if (!details || !details.slides[idx]) return {};
+    const slide = details.slides[idx];
+    const portion = slide.portion;
+    return {
+      opacity: portion,
+      display: portion === 0 ? "none" : "block",
+      // height: portion === 0 ? '0%' : '100%'
+    };
+  }
   const contentRefs = useRef([]);
 
   // Existing renderText function
@@ -150,11 +166,11 @@ drag:false,
   return (
     <div className="h-auto bg-opacity-white ">
       <div className=" padding-vh-mobile items-center justify-between  ">
-        <h3 className="text-28px text-soft-black-text text-center px-6">
+        <h3 className="text-28px text-soft-black-text text-center px-6 font-extralight md:px-36 md:text-64px max-width-desktop md:m-auto ">
           {specificationData[0].titre}
         </h3>
 
-        <div className="navigation-wrapper pb-10">
+        <div className="navigation-wrapper pb-10 md:px-72 2xl:px-96 md:pb-16">
           <div ref={sliderRefHorizontal} className="keen-slider ">
             <div className="keen-slider__slide px-6 number-slide1">
               <div style={scaleStyle(0)}>
@@ -190,7 +206,7 @@ drag:false,
 
           <div
             ref={thumbnailRef}
-            className="keen-slider thumbnail text-21px text-soft-black  px-6 gap-6 justify-center"
+            className="keen-slider thumbnail text-21px text-soft-black  px-6 gap-6 justify-center md:text-32px md:font-normal md:gap-28"
           >
             <div className="keen-slider__slide number-slide1 uppercase flex justify-center width-auto opacity-30">
               <div>TOSCA</div>
@@ -203,15 +219,24 @@ drag:false,
             </div>
           </div>
         </div>
-        <div ref={detailsSliderRef} className="keen-slider details-bloc">
-          <div  style={{ opacity: detailsOpacities[0]}} className="techniques px-6 keen-slider__slide number-slide1">
+        <div
+          ref={detailsSliderRef}
+          className="fader relative grid details-bloc"
+        >
+          <div
+            style={displayStyle(0)}
+            className="techniques px-6  fader__slide number-slide1"
+          >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
               ? specificationData[0].specificationsTosca
               : specificationData[0].specificationsTosca.slice(0, 2)
             ).map((specification, index) => (
-              <div className="details-technique" key={specification._key}>
-                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2">
+              <div
+                className="details-technique md:pb-6"
+                key={specification._key}
+              >
+                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2 md:text-11px md:text-mid-grey md:pb-4">
                   {specification.titre}
                 </p>
                 {renderText(specification.text, index)}
@@ -229,14 +254,20 @@ drag:false,
               </button>
             </div>
           </div>
-          <div style={{ opacity: detailsOpacities[1]}}  className="techniques px-6 keen-slider__slide number-slide2">
+          <div
+            style={displayStyle(1)}
+            className="techniques px-6 fader__slide number-slide2"
+          >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
               ? specificationData[0].specificationsLegende
               : specificationData[0].specificationsLegende.slice(0, 2)
             ).map((specification, index) => (
-              <div className="details-technique" key={specification._key}>
-                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2">
+              <div
+                className="details-technique md:pb-6"
+                key={specification._key}
+              >
+                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2 md:text-11px md:text-mid-grey md:pb-4">
                   {specification.titre}
                 </p>
                 {renderText(specification.text, index)}
@@ -254,14 +285,20 @@ drag:false,
               </button>
             </div>
           </div>
-          <div style={{ opacity: detailsOpacities[2]}}  className="techniques px-6 keen-slider__slide number-slide3">
+          <div
+            style={displayStyle(2)}
+            className="techniques px-6 fader__slide number-slide3"
+          >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
               ? specificationData[0].specificationsR13
               : specificationData[0].specificationsR13.slice(0, 2)
             ).map((specification, index) => (
-              <div className="details-technique" key={specification._key}>
-                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2">
+              <div
+                className="details-technique md:pb-6"
+                key={specification._key}
+              >
+                <p className=" text-mobile-10px-spec uppercase text-spec-black text-center pb-2 md:text-11px md:text-mid-grey md:pb-4">
                   {specification.titre}
                 </p>
                 {renderText(specification.text, index)}
@@ -280,15 +317,16 @@ drag:false,
             </div>
           </div>
         </div>
-
-        <Link
-          href={specificationData[0].buttonUrl}
-          className="flex-1 mt-8  flex md:hidden mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase"
-        >
-          <p className="text-12px text-soft-white ">
-            {specificationData[0].button}
-          </p>
-        </Link>
+        <div className=" md:px-36 md:grid md:grid-cols-12 md:gap-12 ">
+          <Link
+            href={specificationData[0].buttonUrl}
+            className="flex-1 mt-8  flex  mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase md:col-start-6 col-end-8"
+          >
+            <p className="text-12px text-soft-white ">
+              {specificationData[0].button}
+            </p>
+          </Link>
+        </div>
       </div>
     </div>
   );

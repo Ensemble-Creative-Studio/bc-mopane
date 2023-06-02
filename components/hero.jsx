@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 
 export default function Hero({ heroData }) {
-  // console.log(heroData);
-
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [progresses, setProgresses] = useState([]);
   const videoRefs = useRef([]);
@@ -65,12 +63,12 @@ export default function Hero({ heroData }) {
       <div className="h-screen relative">
         {heroData && (
           <>
-            <h1 className= "  text-white text-36px absolute bottom-48 px-6">
+            <h1 className= " font-extralight  text-soft-white text-36px absolute bottom-48 px-6 md:text-96px md:px-36 md:bottom-64">
               {heroData[0].herotext}
             </h1>
             {heroData[0].instruments.map((instrument, index) => (
               <video
-                className="object-cover h-full absolute top-0 left-0 -z-10 videoHero"
+                className="object-cover w-full h-full absolute top-0 left-0 -z-10 videoHero"
                 key={instrument._key}
                 src={instrument.url}
                 muted
@@ -83,7 +81,7 @@ export default function Hero({ heroData }) {
                 }}
               />
             ))}
-            <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white ">
+            <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white md:px-36 ">
               {heroData[0].instruments.map((instrument, index) => (
                 <div
                   className="transitionVideoInstrumentText col-span-2"

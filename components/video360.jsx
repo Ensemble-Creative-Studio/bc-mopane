@@ -132,8 +132,8 @@ export default function Video({ video360Data }) {
 
   return (
     <div ref={editionContainerRef}>
-      <div className="flex items-center h-screen bg-soft-black text-28px px-6 pb-32 ">
-        <div className="relative flex-1 -left-52 top-32 z-10 w-full h-full">
+      <div className="flex items-center h-screen bg-soft-black text-28px px-6 pb-32 md:px-36 md:grid md:grid-cols-12 md:gap-12  ">
+        <div className="relative flex-1 -left-52 top-32 z-10 w-full h-full md:col-start-3 md:col-end-5 ">
           <div ref={videoContainerRef} className="video__container h-full">
             <video
               ref={videoRef}
@@ -147,12 +147,12 @@ export default function Video({ video360Data }) {
             />
           </div>
         </div>
-        <div className="relative z-10 pt-16  flex-1   ESFace text-28px">
-          <h2 className="text-soft-white pb-6">{video360Data[0].titre}</h2>
+        <div className="relative z-10 pt-16  flex-1 font-extralight  ESFace text-28px md:text-64px md:col-start-8 md:col-end-13">
+          <h2 className="text-soft-white pb-6 pr-8 md:pb-12">{video360Data[0].titre}</h2>
           <div id="ed-face">
             {video360Data[0].bulletPoint.map((bullet, index) => (
               <p
-                className=" opacity-0 pb-3 uppercase text-12px text-soft-grey"
+                className=" opacity-0 pb-3 uppercase text-12px text-soft-grey font-normal md:text-21px md:pb-8"
                 key={bullet._key}
                 ref={(ref) => (contentRefs.current[index] = ref)}
               >

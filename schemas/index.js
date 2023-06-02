@@ -12,4 +12,5 @@ import pedigre from './pedigre'
 import showroom from './showroom'
 import footer from './footer'
 import pageFooter from './pageFooter'
-export const schemaTypes = [blockContent,pet,headerinfo,hero,edition,bois,son, video360, nuances, specification, pedigre, showroom,footer,pageFooter]
+import overlay from './overlay'
+export const schemaTypes = [blockContent,pet,headerinfo,hero,edition,bois,son, video360, nuances, specification, pedigre, showroom,footer,pageFooter, overlay]

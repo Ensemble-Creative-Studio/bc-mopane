@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
-  .h-screen {
+  /* .h-screen {
     height: 100svh;
-  }
+  } */
   .h-120{
     height: 120svh;
     height: 120vh;
@@ -22,14 +22,35 @@
 @font-face {
   font-family: "futura";
   src: local("futura"),
-    url("../public/font/FuturaPTBook.otf") format("opentype");
+    url("../public/font/futura/TheFuture-Light.otf") format("opentype");
+
+  font-weight: 300;
+}
+@font-face {
+  font-family: "futura";
+  src: local("futura"),
+    url("../public/font/futura/TheFuture-Regular.otf") format("opentype");
+
   font-weight: 400;
 }
 @font-face {
-  font-family: "ESFace";
+  font-family: "futura";
   src: local("futura"),
-    url("../public/font/ESFace-ExtraLight-Trial.otf") format("opentype");
-  font-weight: 400;
+    url("../public/font/futura/TheFuture-Medium.otf") format("opentype");
+
+  font-weight: 500;
+}
+@font-face {
+  font-family: "ESFace";
+  src: local("esface"),
+    url("../public/font/es-face/ESFace-Thin.otf") format("opentype");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "ESFace";
+  src: local("esface"),
+    url("../public/font/es-face/ESFace-ExtraLight.otf") format("opentype");
+  font-weight: 200;
 }
 .ESFace {
   font-family: "ESFace";
@@ -49,7 +70,7 @@ header {
 }
 a,
 p {
-  font-family: futura;
+  font-family: 'futura';
 }
 
 h1,
@@ -151,4 +172,72 @@ h5 {
   z-index: -10;
   height: 100vh;
   width: 100vw;
+}
+.techniques{
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.thumbnail.nuances {
+  display: none !important;
+}
+
+.max-width-desktop{
+  max-width: 1000px;
+}
+@media (min-width: 768px) {
+
+  .backgroundLine::before,
+  .backgroundLine::after {
+    content: "";
+    width: 100%;
+    height: 110%;
+    position: absolute;
+    top: 95px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(#32312f 1px, transparent 1px);
+    background-size: 100% 74px;
+    z-index: 0;
+  }
+  .backgroundLine div {
+    z-index: 2;
+  }
+
+  .backgroundLine::before {
+    top: 60px;
+
+
+  }
+  .instrument1 {
+    top: -120px;
+
+  }
+  .instrument2 {
+    top: 31px;
+    right: 7.5vw;
+  }
+  .instrument3 {
+    top: 103px;
+    right: -7.5vw;
+  }
+  .radiusDesktop{
+    border-radius: 1.5%;
+  }
+  
+.thumbnail.nuances {
+  display: flex !important;
+}
+.slider__container {
+  /* background-color: #ecf0f1; */
+  min-width: 50%;
+}
+
+.radius{
+  border-radius: 1.5%;
+  aspect-ratio: 1.26;
+}
 }

@@ -23,9 +23,8 @@ module.exports = {
         "mobile-10px-spec": [
           "1rem",
           {
-            letterSpacing: '0.08em',
+            letterSpacing: "0.08em",
             fontWeight: "400",
-           
           },
         ],
         "11px": [
@@ -33,7 +32,7 @@ module.exports = {
           {
             lineHeight: "0.9rem",
             fontWeight: "400",
-            letterSpacing: '0.06em',
+            letterSpacing: "0.06em",
           },
         ],
         "11px-less-condensed": [
@@ -41,7 +40,7 @@ module.exports = {
           {
             lineHeight: "0.9rem",
             fontWeight: "400",
-            letterSpacing: '0.1em',
+            letterSpacing: "0.1em",
           },
         ],
         "12px": [
@@ -49,7 +48,7 @@ module.exports = {
           {
             lineHeight: "100%",
             fontWeight: "400",
-            letterSpacing: '0.05em',
+            letterSpacing: "0.05em",
           },
         ],
         "14px": [
@@ -57,7 +56,15 @@ module.exports = {
           {
             lineHeight: "125%",
             fontWeight: "400",
-            letterSpacing: '0.02em',
+            letterSpacing: "0.02em",
+          },
+        ],
+        "14px-overlay": [
+          "1.4rem",
+          {
+            lineHeight: "145%",
+            fontWeight: "400",
+            letterSpacing: "0.02em",
           },
         ],
         "16px": [
@@ -65,7 +72,7 @@ module.exports = {
           {
             lineHeight: "100%",
             fontWeight: "200",
-            letterSpacing: '0.06em',
+            letterSpacing: "0.06em",
           },
         ],
         "16pxCustomline": [
@@ -73,7 +80,7 @@ module.exports = {
           {
             lineHeight: "150%",
             fontWeight: "200",
-            letterSpacing: '0.01em',
+            letterSpacing: "0.01em",
           },
         ],
         "21px": [
@@ -81,7 +88,13 @@ module.exports = {
           {
             lineHeight: "100%",
             fontWeight: "400",
-
+          },
+        ],
+        "21px-line": [
+          "2.1rem",
+          {
+            lineHeight: "150%",
+            fontWeight: "400",
           },
         ],
         "24px": [
@@ -89,7 +102,7 @@ module.exports = {
           {
             lineHeight: "115%",
             fontWeight: "200",
-            letterSpacing: '0.01em'
+            letterSpacing: "0.01em",
           },
         ],
         "28px": [
@@ -97,7 +110,15 @@ module.exports = {
           {
             lineHeight: "125%",
             fontWeight: "200",
-            letterSpacing: '-0.01em'
+            letterSpacing: "-0.01em",
+          },
+        ],
+        "32px": [
+          "3.2rem",
+          {
+            lineHeight: "101%",
+            fontWeight: "300",
+     
           },
         ],
         "36px": [
@@ -105,7 +126,6 @@ module.exports = {
           {
             lineHeight: "115%",
             fontWeight: "200",
-  
           },
         ],
         "40px": [
@@ -113,19 +133,52 @@ module.exports = {
           {
             lineHeight: "100%",
             fontWeight: "100",
-  
+          },
+        ],
+        "64px": [
+          "6.4rem",
+          {
+            lineHeight: "115%",
+            fontWeight: "200",
+          },
+        ],
+
+        "96px": [
+          "9.6rem",
+          {
+            lineHeight: "100%",
+            fontWeight: "115",
+            letterSpacing: "-0.01em",
+          },
+        ],
+
+        "96px-line": [
+          "9.6rem",
+          {
+            lineHeight: "115%",
+            fontWeight: "115",
+            letterSpacing: "-0.01em",
+          },
+        ],
+        "132px": [
+          "13.2rem",
+          {
+            
+            lineHeight: "125%",
+            fontWeight: "100",
+      
           },
         ],
       },
-      colors:{
-        'soft-black': '#1A1A19',
-        'soft-white':'#FCFBF8',
-        'opacity-white':'#CDC9C1',
-        'soft-grey':'#AAA69F',
-        'mid-grey':'#726F6A',
-        'soft-black-text':'#32312F',
-        'spec-black':"#13181F"
-      }
+      colors: {
+        "soft-black": "#1A1A19",
+        "soft-white": "#FCFBF8",
+        "opacity-white": "#CDC9C1",
+        "soft-grey": "#AAA69F",
+        "mid-grey": "#726F6A",
+        "soft-black-text": "#32312F",
+        "spec-black": "#13181F",
+      },
     },
     plugins: [],
   },

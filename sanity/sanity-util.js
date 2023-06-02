@@ -38,3 +38,7 @@ export async function getFooter(lang) {
 export async function getPage(lang) {
   return client.fetch(groq`*[_type == 'pageFooter']`);
 }
+
+export async function getOverlay(lang) {
+  return client.fetch(groq`*[_type == 'overlay']`);
+}

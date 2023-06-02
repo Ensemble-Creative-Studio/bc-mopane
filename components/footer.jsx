@@ -22,7 +22,7 @@ export default async function Footer() {
           </div>
         ))}
       </div>
-      <p className="text-mid-grey text-14px text-center pt-8">© 2023 Groupe Buffet Crampon</p>
+      <p className="text-mid-grey text-14px text-center  pt-8">© 2023 Groupe Buffet Crampon</p>
     </div>
   );
 }

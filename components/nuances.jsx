@@ -6,6 +6,38 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { urlForImage } from "../sanity/lib/image";
 
+function ThumbnailPlugin(mainRef) {
+  return (slider) => {
+    function removeActive() {
+      slider.slides.forEach((slide) => {
+        slide.classList.remove("active")
+      })
+    }
+    function addActive(idx) {
+      slider.slides[idx].classList.add("active")
+    }
+
+    function addClickEvents() {
+      slider.slides.forEach((slide, idx) => {
+        slide.addEventListener("click", () => {
+          if (mainRef.current) mainRef.current.moveToIdx(idx)
+        })
+      })
+    }
+    slider.on("created", () => {
+      if (!mainRef.current) return
+      addActive(slider.track.details.rel)
+      addClickEvents()
+      mainRef.current.on("animationStarted", (main) => {
+        removeActive()
+        const next = main.animator.targetIdx || 0
+        addActive(main.track.absToRel(next))
+        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next))
+      })
+    })
+  }
+}
+
 export default function Nuances({ nuancesData }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -19,28 +51,63 @@ export default function Nuances({ nuancesData }) {
       },
     
   });
+  const [thumbnailRef] = useKeenSlider(
+    {
+      initial: 0,
+      slides: {
+        perView: 6,
+        spacing: 10,
+      },
+    },
+    [ThumbnailPlugin(instanceRef)]
+  )
 
   return (
     <div>
-    <div className="h-screen bg-soft-black pt-32 flex flex-col justify-between ">
-      <div>
-        <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10">
+    <div className="h-screen bg-soft-black pt-32 flex flex-col justify-between md:min-h-screen md:h-auto md:pt-60">
+      <div className="md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64">
+        <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0">
           {nuancesData[0].titre}
         </h3>
-        <h5 className="text-16pxCustomline text-white px-6">
+        <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 " >
           {nuancesData[0].texte}
         </h5>
       </div>
-      <div className="navigation-wrapper">
-        <div ref={sliderRef} className="keen-slider">
+      <div className="navigation-wrapper md:px-36 md:relative md:grid md:grid-cols-12 md:gap-12 ">
+        <div ref={sliderRef} className="keen-slider radiusDesktop md:col-span-full md:row-start-1 ">
           {nuancesData[0].slider.map((slide, index) => (
             <div key={slide._key} className="keen-slider__slide">
               {slide.mediaType === "image" && slide.image && (
                 <Image
+                className="object-cover h-full w-full"
                   src={urlForImage(slide.image.asset._ref)}
                   alt="Details instruments"
-                  width={960}
-                  height={600}
+                  width={1560}
+                  height={1200}
+                />
+              )}
+              {slide.mediaType === "video" && slide.video && (
+                <video
+                  src={slide.video}
+                  className="object-cover h-full w-full"
+                  muted
+                  autoPlay
+                  loop
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <div ref={thumbnailRef} className="keen-slider thumbnail nuances md:flex md:col-start-8 md:col-end-13 md:pr-12 md:bottom-0">
+          {nuancesData[0].slider.map((slide, index) => (
+            <div key={slide._key} className="keen-slider__slide">
+              {slide.mediaType === "image" && slide.image && (
+                <Image
+                className="object-cover h-full w-full"
+                  src={urlForImage(slide.image.asset._ref)}
+                  alt="Details instruments"
+                  width={300}
+                  height={200}
                 />
               )}
               {slide.mediaType === "video" && slide.video && (
@@ -56,7 +123,7 @@ export default function Nuances({ nuancesData }) {
           ))}
         </div>
         {loaded && instanceRef.current && (
-          <div className="navigation-controls flex items-center justify-center pt-6 pb-8">
+          <div className="navigation-controls flex items-center justify-center pt-6 pb-8  md:col-start-6 md:col-end-8 md:bottom-0">
             <Arrow
               left
               onClick={(e) => e.stopPropagation() || instanceRef.current?.prev()}

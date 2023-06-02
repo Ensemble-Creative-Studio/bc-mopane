@@ -1,11 +1,12 @@
 "use client"
 import React, { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
 import Image from "next/image";
+import { gsap } from "gsap";
+
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
-import legende from "../public/instruments/LEGENDE.png";
-import r13 from "../public/instruments/R13.png";
+import r13 from "../public/instruments/LEGENDE.png";
+import  legende from "../public/instruments/R13.png";
 
 export default function Edition({ editionData }) {
   const editionContainerRef = useRef(null);
@@ -156,14 +157,14 @@ export default function Edition({ editionData }) {
 
   return (
     <div ref={editionContainerRef}>
-      <div className="flex items-center h-screen edition text-28px ">
-        <div className="relative backgroundLine text-soft-white ESFace grid grid-cols-6 gap-6 px-6">
+      <div className="flex items-center h-screen edition text-28px md:text-64px ">
+        <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36">
           {editionData[0].editionText.map((block, index) => (
-            <div className="col-start-2 col-end-7" key={block._key}>
+            <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>
               {renderText(block.children, index)}
             </div>
           ))}
-          <div className="instruments-slider absolute top-0 left-0 h-full w-full col-start-1 col-end-2">
+          <div className="instruments-slider absolute top-0 left-0 h-full w-full col-start-1 col-end-3 md:col-end-5">
             <Image
               ref={instrument1Ref}
               className="absolute w-full object-contain h-full instrument1 opacity-0"
