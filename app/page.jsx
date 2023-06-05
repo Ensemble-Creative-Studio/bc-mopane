@@ -13,6 +13,8 @@ import Specifications from "../components/specifications";
 import Pedigre from "../components/pedigre";
 import Showroom from "../components/showroom";
 import Footer from "../components/footer";
+
+import { AnimationProvider } from "../components/AnimationContext";
 import { getHeader } from "../sanity/sanity-util";
 import { getHero } from "../sanity/sanity-util";
 import { getEdition } from "../sanity/sanity-util";
@@ -39,7 +41,8 @@ export default async  function Home() {
   const showroomData = await getShowroom();
   const overlayData = await getOverlay();
   return (
-    <>
+    <div>
+      <AnimationProvider>
     <div className="relative z-20 mb-52 md:mb-40" >
     <div className="background"></div>
       <Header headerData={headerData} />
@@ -57,6 +60,7 @@ export default async  function Home() {
   
     </div>
     <Footer />
-    </>
+    </AnimationProvider>
+    </div>
   );
 }

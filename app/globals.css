@@ -194,6 +194,76 @@ h5 {
 .max-width-desktop{
   max-width: 1000px;
 }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.scaled{
+  transform: scale(1.15);
+  transition: 0.6s ease all;
+}
+.unscaled{
+  transform: scale(1);
+  transition: 0.6s ease all 0.65s;
+}
+.removeOpacity{
+  transition: opacity 0.6s ease 0.7s, z-index 0.1s ease 1.3s;
+opacity: 0;
+  z-index: -1 !important;
+}
+.enter-downAnim{
+  animation: fadeInDown 0.6s ease forwards ;
+}
+.enter-downAnimDelay{
+  animation: fadeInDown 0.6s ease 0.65s forwards ;
+}
+.enter-upAnim {
+  animation: fadeInUp 0.6s ease forwards ;
+}
+.fade-out-up {
+  animation: fadeOutUp 0.6s ease forwards;
+}
+.fade-out-down {
+  animation: fadeOutDown 0.6s ease forwards;
+}
+
 @media (min-width: 768px) {
 
   .backgroundLine::before,

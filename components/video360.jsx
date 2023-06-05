@@ -140,7 +140,8 @@ export default function Video({ video360Data }) {
               className="object-cover heightCustom absolute top-0 left-0 -z-10 videoHero"
               src="/videos/3D.mp4"
               muted
-              playsinline
+              playsInline
+              controls={false}
               autoPlay
               loop
               // onTimeUpdate={() => handleTimeUpdate(index)}

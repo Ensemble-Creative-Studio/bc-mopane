@@ -1,12 +1,14 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect, useRef, useContext } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { AnimationContext } from "./AnimationContext";
 export default function Hero({ heroData }) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [progresses, setProgresses] = useState([]);
   const videoRefs = useRef([]);
-
+  const { isAnimating } = useContext(AnimationContext);
   const handleVideoEnded = () => {
     setTimeout(() => {
       setProgresses((prevProgresses) => {
@@ -25,25 +27,24 @@ export default function Hero({ heroData }) {
     if (currentVideoIndex === index) {
       return;
     }
-  
+
     // Stop the current video and reset its time
     const currentVideoElement = videoRefs.current[currentVideoIndex];
     if (currentVideoElement) {
       currentVideoElement.pause();
       currentVideoElement.currentTime = 0;
     }
-  
+
     // Reset the progress bar for the current video
     setProgresses((prevProgresses) => {
       const newProgresses = [...prevProgresses];
       newProgresses[currentVideoIndex] = 0;
       return newProgresses;
     });
-  
+
     // Start playing the new video
     setCurrentVideoIndex(index);
   };
-  
 
   const handleTimeUpdate = (index) => {
     const videoElement = videoRefs.current[index];
@@ -58,6 +59,7 @@ export default function Hero({ heroData }) {
   };
 
   useEffect(() => {
+    AOS.init();
     const videoElement = videoRefs.current[currentVideoIndex];
     if (videoElement) {
       videoElement.play();
@@ -69,16 +71,22 @@ export default function Hero({ heroData }) {
       <div className="h-screen relative">
         {heroData && (
           <>
-            <h1 className= " font-extralight  text-soft-white text-36px absolute bottom-48 px-6 md:text-96px md:px-36 md:bottom-64">
+            <h1
+              className={`hero-component font-extralight  text-soft-white text-36px absolute bottom-48 px-6 md:text-96px md:px-36 md:bottom-64 opacity-0 ${
+                isAnimating ? "enter-downAnimDelay" : ""
+              }`}
+            >
               {heroData[0].herotext}
             </h1>
             {heroData[0].instruments.map((instrument, index) => (
               <video
-                className="object-cover w-full h-full absolute top-0 left-0 -z-10 videoHero"
+                className={`object-cover w-full h-full absolute top-0 left-0 -z-10 videoHero scaled ${
+                  isAnimating ? "unscaled" : ""
+                }`}
                 key={instrument._key}
                 src={instrument.url}
                 muted
-                playsinline
+                playsInline
                 onEnded={handleVideoEnded}
                 onTimeUpdate={() => handleTimeUpdate(index)}
                 ref={(el) => (videoRefs.current[index] = el)}

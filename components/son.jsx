@@ -123,7 +123,7 @@ useEffect(() => {
       end: "bottom+=2400px",
       pinSpacing: true,
     });
-
+console.log(...animatedOpacityRefs.current)
     gsap.to(animatedOpacityRefs.current, {
       scrollTrigger: {
         trigger: editionContainer,
@@ -293,7 +293,7 @@ useEffect(() => {
               src={video.url}
               muted={isOffVisible}
               loop
-              playsinline
+              playsInline
               autoPlay={false}
               controls={false}
             />
