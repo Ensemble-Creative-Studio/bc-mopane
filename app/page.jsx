@@ -13,8 +13,6 @@ import Specifications from "../components/specifications";
 import Pedigre from "../components/pedigre";
 import Showroom from "../components/showroom";
 import Footer from "../components/footer";
-
-
 import { getHeader } from "../sanity/sanity-util";
 import { getHero } from "../sanity/sanity-util";
 import { getEdition } from "../sanity/sanity-util";
