@@ -103,7 +103,7 @@ export default function Hero({ heroData }) {
                   style={{ opacity: index === currentVideoIndex ? 1 : 0.5 }}
                 >
                   <p
-                    className="pb-2"
+                    className="pb-2 cursor-pointer md:hover:font-medium md:transition-all"
                     onClick={() => handleInstrumentClick(index)}
                   >
                     {instrument.instrument}

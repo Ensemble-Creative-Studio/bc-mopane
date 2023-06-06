@@ -9,7 +9,7 @@ export default {
     },
     i18n: {
       base: 'fr',
-      languages: ['fr', 'en', 'de', 'ja'],
+      languages: ['fr', 'en','de','es', 'Chinese','ja'],
       fieldNames: {
         lang: '__i18n_lang',
         references: '__i18n_refs',

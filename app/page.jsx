@@ -30,6 +30,7 @@ export default async  function Home() {
 
   const lang = "fr"; // Set lang variable based on browser language, default to "fr" if not available
   const headerData = await getHeader()
+  console.log(headerData)
   const heroData = await getHero();
    const editionData = await getEdition();
   const boisData = await getBois();
@@ -37,7 +38,7 @@ export default async  function Home() {
   const video360Data = await getVideo();
   const nuancesData = await getNuances();
   const specificationData = await getSpecification();
-  const pedigreData = await getPedigre();
+  // const pedigreData = await getPedigre();
   const showroomData = await getShowroom();
   const overlayData = await getOverlay();
   return (
@@ -54,7 +55,7 @@ export default async  function Home() {
       <Video video360Data={video360Data} />
       <Nuances nuancesData={nuancesData} />
       <Specifications specificationData={specificationData} />
-      <Pedigre pedigreData={pedigreData}></Pedigre>
+      {/* <Pedigre pedigreData={pedigreData}></Pedigre> */}
       <Showroom showroomData={showroomData}></Showroom>
 
   
