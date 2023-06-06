@@ -2,7 +2,8 @@
 import React, { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
 import r13 from "../public/instruments/LEGENDE.png";
@@ -19,7 +20,7 @@ export default function Edition({ editionData }) {
 
   const renderText = (textArray, index) => {
     return (
-      <div ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
+      <div data-aos="fade-in-right"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="350"  data-aos-once="true"  ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
         {textArray.map((textItem, i) => {
           if (textItem._type === "span") {
             if (textItem.marks.includes("strong")) {
@@ -48,6 +49,7 @@ export default function Edition({ editionData }) {
     );
   };
   useLayoutEffect(() => {
+    AOS.init();
     gsap.registerPlugin(ScrollTrigger);
 
     const editionContainer = editionContainerRef.current;

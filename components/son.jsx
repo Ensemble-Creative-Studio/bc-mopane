@@ -58,7 +58,7 @@ useEffect(() => {
 
   const renderText = (textArray, index) => {
     return (
-      <div ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
+      <div data-aos="fade-in-up"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="350"  data-aos-once="false" ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
         {textArray.map((textItem, i) => {
           if (textItem._type === "span") {
             if (textItem.marks.includes("strong")) {

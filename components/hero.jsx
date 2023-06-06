@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useContext } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import { AnimationContext } from "./AnimationContext";
 export default function Hero({ heroData }) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -59,7 +58,7 @@ export default function Hero({ heroData }) {
   };
 
   useEffect(() => {
-    AOS.init();
+
     const videoElement = videoRefs.current[currentVideoIndex];
     if (videoElement) {
       videoElement.play();
