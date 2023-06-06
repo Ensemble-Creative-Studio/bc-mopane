@@ -272,8 +272,10 @@ useEffect(() => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.killTweensOf(animatedOpacityRefs.current);
       gsap.killTweensOf(defaultOpacityRefs.current);
+      animatedOpacityRefs.current = [];  // Resetting the references
+      defaultOpacityRefs.current = [];  // Resetting the references
     };
-  }, [sonData]);
+  }, [sonData,language]);
 
   return (
     <div ref={sonContainerRef}>

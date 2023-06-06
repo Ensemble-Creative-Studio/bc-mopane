@@ -9,6 +9,8 @@ export default function Hero({ heroData }) {
   const videoRefs = useRef([]);
   const { isAnimating } = useContext(AnimationContext);
   const { language, setLanguage } = useContext(AnimationContext);
+  const [playingIndex, setPlayingIndex] = useState(null);
+
   const handleVideoEnded = () => {
     setTimeout(() => {
       setProgresses((prevProgresses) => {
@@ -31,6 +33,7 @@ export default function Hero({ heroData }) {
     // Stop the current video and reset its time
     const currentVideoElement = videoRefs.current[currentVideoIndex];
     if (currentVideoElement) {
+      currentVideoElement.style.opacity='0'
       currentVideoElement.pause();
       currentVideoElement.currentTime = 0;
     }

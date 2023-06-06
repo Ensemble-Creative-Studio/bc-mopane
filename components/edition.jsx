@@ -159,8 +159,10 @@ console.log(animatedOpacityRefs)
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.killTweensOf(animatedOpacityRefs.current);
       gsap.killTweensOf(defaultOpacityRefs.current);
+      animatedOpacityRefs.current = [];  // Resetting the references
+      defaultOpacityRefs.current = [];  // Resetting the references
     };
-  }, [editionData]);
+  }, [editionData, language]);
 
   return (
     <div ref={editionContainerRef}>

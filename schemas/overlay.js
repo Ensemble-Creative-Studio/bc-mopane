@@ -27,5 +27,10 @@ export default {
       type: "string",
       title: "Texte bouton 'activer l'audio'",
     },
+    {
+      name: "buttonMute",
+      type: "string",
+      title: "Texte bouton 'couper le son'",
+    },
   ],
 };
