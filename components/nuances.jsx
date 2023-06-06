@@ -1,8 +1,10 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import "keen-slider/keen-slider.min.css";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { AnimationContext } from "./AnimationContext";
 import { useKeenSlider } from "keen-slider/react";
 import { urlForImage } from "../sanity/lib/image";
 
@@ -39,6 +41,8 @@ function ThumbnailPlugin(mainRef) {
 }
 
 export default function Nuances({ nuancesData }) {
+  const { language, setLanguage } = useContext(AnimationContext);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -67,10 +71,10 @@ export default function Nuances({ nuancesData }) {
     <div className="h-screen bg-soft-black pt-32 flex flex-col justify-between md:min-h-screen md:h-auto md:pt-60">
       <div className="md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-40">
         <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0">
-          {nuancesData[0].titre}
+          {nuancesData[language].titre}
         </h3>
         <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 md:pt-16 " >
-          {nuancesData[0].texte}
+          {nuancesData[language].texte}
         </h5>
       </div>
       <div className="navigation-wrapper md:px-36 md:relative md:grid md:grid-cols-12 md:gap-12 ">

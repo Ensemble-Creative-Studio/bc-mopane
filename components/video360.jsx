@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useContext } from "react";
 import { gsap } from "gsap";
-import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
+import { AnimationContext } from "./AnimationContext";
 
 export default function Video({ video360Data }) {
+  const { language, setLanguage } = useContext(AnimationContext);
   const editionContainerRef = useRef(null);
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
@@ -150,9 +150,9 @@ export default function Video({ video360Data }) {
           </div>
         </div>
         <div className="relative z-10 pt-16  flex-1 font-extralight  ESFace text-28px md:text-64px md:col-start-8 md:col-end-13">
-          <h2 className="text-soft-white pb-6 pr-8 md:pb-12 md:pr-20 md:widthoverlay">{video360Data[0].titre}</h2>
+          <h2 className="text-soft-white pb-6 pr-8 md:pb-12 md:pr-20 md:widthoverlay">{video360Data[language].titre}</h2>
           <div id="ed-face">
-            {video360Data[0].bulletPoint.map((bullet, index) => (
+            {video360Data[language].bulletPoint.map((bullet, index) => (
               <p
                 className=" opacity-0 pb-3 uppercase text-12px text-soft-grey font-normal md:text-21px md:pb-8"
                 key={bullet._key}

@@ -1,11 +1,10 @@
+'use client'
 import Link from "next/link";
-import { getFooter, getPage } from "../sanity/sanity-util"; // Assuming you have a function to fetch page data from Sanity
+import React, { useLayoutEffect, useRef, useContext } from "react";
+import { AnimationContext } from "./AnimationContext";
+export default  function Footer({footerData,pageData}) {
+  const { language, setLanguage } = useContext(AnimationContext);
 
-export default async function Footer() {
-  const footerData = await getFooter();
-
-  // Get the pageFooters array from the footerData
-  const pageData = await getPage();
 
   // Fetch page data for each referenced page
 

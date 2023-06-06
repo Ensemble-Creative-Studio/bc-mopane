@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect, useContext } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import on from "../public/videos/on.svg";
 import off from "../public/videos/off.svg";
+import { AnimationContext } from "./AnimationContext";
 export default function Edition({ sonData }) {
+  const { language, setLanguage } = useContext(AnimationContext);
   const sonContainerRef = useRef(null);
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
@@ -123,7 +125,6 @@ useEffect(() => {
       end: "bottom+=2400px",
       pinSpacing: true,
     });
-console.log(...animatedOpacityRefs.current)
     gsap.to(animatedOpacityRefs.current, {
       scrollTrigger: {
         trigger: editionContainer,
@@ -278,7 +279,7 @@ console.log(...animatedOpacityRefs.current)
     <div ref={sonContainerRef}>
       <div className="flex relative items-end h-screen text-36px bg-soft-black pr-12 md:text-96px-line md:px-36 md:grid md:grid-cols-12 md:gap-12">
         <div className="relative  text-opacity-white ESFace font-extralight pb-16 px-6 z-10 md:col-start-1 md:col-end-9 md:self-center">
-          {sonData[0].sonText.map((block, index) => (
+          {sonData[language].sonText.map((block, index) => (
             <div className="col-start-2 col-end-7" key={block._key}>
               {renderText(block.children, index)}
             </div>

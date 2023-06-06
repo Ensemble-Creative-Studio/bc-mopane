@@ -1,18 +1,20 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useContext } from "react";
 import Image from "next/image";
 import img0 from "../public/bois/img-0.png";
 import img1 from "../public/bois/img-1.png";
 import img2 from "../public/bois/img-2.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
+import { AnimationContext } from "./AnimationContext";
 export default function Bois({ boisData }) {
+  const { language, setLanguage } = useContext(AnimationContext);
   const images = [img0, img1, img2];
   const editionContainerRef = useRef(null);
   const contentRefs = useRef([]);
   const opacityRefs = useRef([]);
   const imageOpacityRefs  = useRef([]);
+
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -126,13 +128,13 @@ export default function Bois({ boisData }) {
       <div className="pt-36 text-soft-white px-6 pb-16 md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64 ">
         <div className="flex flex-col md:col-start-2 md:col-end-9 ">
           <p className="text-12px md:text-21px pb-3 uppercase">
-            {boisData[0].boisTitre}
+            {boisData[language].boisTitre}
           </p>
-          <h3 className="text-24px md:text-64px">{boisData[0].boisPhrase}</h3>
+          <h3 className="text-24px md:text-64px">{boisData[language].boisPhrase}</h3>
         </div>
       </div>
       <div className="px-6 flex gap-14 flex-col md:gap-32 md:px-0" >
-        {boisData[0].bois.map((bois, index) => (
+        {boisData[language].bois.map((bois, index) => (
           <div
             ref={(ref) => {
               contentRefs.current[index] = ref;

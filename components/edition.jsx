@@ -1,5 +1,5 @@
 "use client"
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useContext } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import AOS from "aos";
@@ -8,8 +8,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
 import r13 from "../public/instruments/LEGENDE.png";
 import  legende from "../public/instruments/R13.png";
+import { AnimationContext } from "./AnimationContext";
 
 export default function Edition({ editionData }) {
+  const { language, setLanguage } = useContext(AnimationContext);
   const editionContainerRef = useRef(null);
   const contentRefs = useRef([]);
   const animatedOpacityRefs = useRef([]);
@@ -17,6 +19,7 @@ export default function Edition({ editionData }) {
   const instrument1Ref = useRef(null);
   const instrument2Ref = useRef(null);
   const instrument3Ref = useRef(null);
+console.log(animatedOpacityRefs)
 
   const renderText = (textArray, index) => {
     return (
@@ -91,7 +94,7 @@ export default function Edition({ editionData }) {
               { opacity:'0', duration: 0.5 }
             );
           } else if (progress > 5 && progress < 30) {
-            gsap.to(animatedOpacityRefs.current[0], {
+            gsap.to([animatedOpacityRefs.current[0], animatedOpacityRefs.current[6]], {
               opacity: 1,
               duration: 0.5,
             });
@@ -100,6 +103,8 @@ export default function Edition({ editionData }) {
                 ...defaultOpacityRefs.current,
                 animatedOpacityRefs.current[1],
                 animatedOpacityRefs.current[2],
+                animatedOpacityRefs.current[7],
+                animatedOpacityRefs.current[8],
               ],
               { color: '    #726F6A', duration: 0.5 }
             );
@@ -161,7 +166,7 @@ export default function Edition({ editionData }) {
     <div ref={editionContainerRef}>
       <div className="flex items-center h-screen edition text-28px md:text-64px ">
         <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
-          {editionData[0].editionText.map((block, index) => (
+          {editionData[language].editionText.map((block, index) => (
             <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>
               {renderText(block.children, index)}
             </div>

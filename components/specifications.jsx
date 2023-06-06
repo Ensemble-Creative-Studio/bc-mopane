@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "keen-slider/keen-slider.min.css";
@@ -9,6 +9,7 @@ import { urlForImage } from "../sanity/lib/image";
 import tosca from "../public/instruments/tosca90.png";
 import legende from "../public/instruments/legende90.png";
 import r13 from "../public/instruments/R1390.png";
+import { AnimationContext } from "./AnimationContext";
 
 function ThumbnailPlugin(mainRef, detailsRef) {
   return (slider) => {
@@ -46,6 +47,7 @@ function ThumbnailPlugin(mainRef, detailsRef) {
 }
 
 export default function Specifications({ specificationData }) {
+  const { language, setLanguage } = useContext(AnimationContext);
   const [detailsOpacities, setDetailsOpacities] = useState([]);
   const [detailsDisplay, setDetailsDisplay] = useState([]);
   const [opacities, setOpacities] = React.useState([]);
@@ -167,7 +169,7 @@ export default function Specifications({ specificationData }) {
     <div className="h-auto bg-opacity-white ">
       <div className=" padding-vh-mobile items-center justify-between  ">
         <h3 className="text-28px text-soft-black-text text-center px-6 font-extralight md:px-36 md:text-64px max-width-desktop md:m-auto ">
-          {specificationData[0].titre}
+          {specificationData[language].titre}
         </h3>
 
         <div className="navigation-wrapper pb-10 md:px-72 2xl:px-96 md:pb-16">
@@ -229,8 +231,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[0].specificationsTosca
-              : specificationData[0].specificationsTosca.slice(0, 2)
+              ? specificationData[language].specificationsTosca
+              : specificationData[language].specificationsTosca.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -249,8 +251,8 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[0].moins
-                  : specificationData[0].suite}{" "}
+                  ? specificationData[language].moins
+                  : specificationData[language].suite}{" "}
               </button>
             </div>
           </div>
@@ -260,8 +262,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[0].specificationsLegende
-              : specificationData[0].specificationsLegende.slice(0, 2)
+              ? specificationData[language].specificationsLegende
+              : specificationData[language].specificationsLegende.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -280,8 +282,8 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[0].moins
-                  : specificationData[0].suite}{" "}
+                  ? specificationData[language].moins
+                  : specificationData[language].suite}{" "}
               </button>
             </div>
           </div>
@@ -291,8 +293,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[0].specificationsR13
-              : specificationData[0].specificationsR13.slice(0, 2)
+              ? specificationData[language].specificationsR13
+              : specificationData[language].specificationsR13.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -311,19 +313,19 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[0].moins
-                  : specificationData[0].suite}{" "}
+                  ? specificationData[language].moins
+                  : specificationData[language].suite}{" "}
               </button>
             </div>
           </div>
         </div>
         <div className=" md:px-36 md:grid md:grid-cols-12 md:gap-12 ">
           <Link
-            href={specificationData[0].buttonUrl}
+            href={specificationData[language].buttonUrl}
             className="flex-1 mt-8  flex  mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase md:col-start-6 col-end-8"
           >
             <p className="text-12px text-soft-white ">
-              {specificationData[0].button}
+              {specificationData[language].button}
             </p>
           </Link>
         </div>

@@ -8,6 +8,7 @@ export default function Hero({ heroData }) {
   const [progresses, setProgresses] = useState([]);
   const videoRefs = useRef([]);
   const { isAnimating } = useContext(AnimationContext);
+  const { language, setLanguage } = useContext(AnimationContext);
   const handleVideoEnded = () => {
     setTimeout(() => {
       setProgresses((prevProgresses) => {
@@ -65,6 +66,11 @@ export default function Hero({ heroData }) {
     }
   }, [currentVideoIndex]);
 
+
+  const heroText = {
+    0: heroData[0].herotext,
+    1: heroData[1].herotext,
+  };
   return (
     <div>
       <div className="h-screen relative">
@@ -75,7 +81,7 @@ export default function Hero({ heroData }) {
                 isAnimating ? "enter-downAnimDelay" : ""
               }`}
             >
-              {heroData[0].herotext}
+              {heroData[language].herotext}
             </h1>
             {heroData[0].instruments.map((instrument, index) => (
               <video
