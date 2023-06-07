@@ -210,13 +210,13 @@ export default function Specifications({ specificationData }) {
             ref={thumbnailRef}
             className="keen-slider thumbnail text-21px text-soft-black  px-6 gap-6 justify-center md:text-32px md:font-normal md:gap-28"
           >
-            <div className="keen-slider__slide number-slide1 uppercase flex justify-center width-auto opacity-30 cursor-pointer">
+            <div className="keen-slider__slide number-slide1 uppercase flex justify-center width-auto opacity-30 cursor-pointer md:hover:opacity-80 md:transition-all">
               <p>TOSCA</p>
             </div>
-            <div className="keen-slider__slide number-slide2 uppercase flex justify-center width-auto opacity-30 cursor-pointer">
+            <div className="keen-slider__slide number-slide2 uppercase flex justify-center width-auto opacity-30 cursor-pointer md:hover:opacity-80 md:transition-all">
               <p>Légende</p>
             </div>
-            <div className="keen-slider__slide number-slide3 uppercase flex justify-center width-auto opacity-30 cursor-pointer">
+            <div className="keen-slider__slide number-slide3 uppercase flex justify-center width-auto opacity-30 cursor-pointer md:hover:opacity-80 md:transition-all">
               <p>R13</p>
             </div>
           </div>

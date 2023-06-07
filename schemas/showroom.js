@@ -37,5 +37,15 @@ export default {
       type: "url",
       title: 'url du bouton "Trouver un showroom"',
     },
+    {
+      name: "buttonTextRevendeur",
+      type: "string",
+      title: 'Texte du bouton "Trouver un revendeur"',
+    },
+    {
+      name: "buttonUrlRevendeur",
+      type: "url",
+      title: 'url du bouton "Trouver un revendeur"',
+    },
   ],
 };

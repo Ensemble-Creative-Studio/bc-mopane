@@ -11,7 +11,7 @@ export default function Showroom({ showroomData }) {
   return (
     <div className="h-almost-screen bg-mid-grey flex items-center px-6 md:px-36 ">
       <div className="flex flex-col md:flex-row-reverse">
-        <div className="image__container">
+        <div className="image__container flex-1">
           <Image
             className="radius object-cover h-auto w-full"
             src={urlForImage(showroomData[0].image.asset._ref)}
@@ -20,23 +20,30 @@ export default function Showroom({ showroomData }) {
             height={960}
           />
         </div>
-        <div>
+        <div className="flex-1">
         <h3 className="text-28px text-soft-white pt-10 md:text-64px">
           {showroomData[language].titre}
         </h3>
-        <Link
+        <div >
+          <div className="flex md:gap-12 md:mt-24">
+          <Link
           href={showroomData[language].buttonUrl}
-          className="flex-1  font-[450] text-16px text-soft-white pt-10 flex md:text-21px items-center"
+          className="text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
         >
           <p>{showroomData[language].buttonText}</p>
-          <Image
-                    className="ml-2 md:relative md:top-1"
-                    src={arrow}
-                    alt="Details instruments"
-                    width={16}
-                    height={16}
-                  />
+   
         </Link>
+        <Link
+          href={showroomData[language].buttonUrlRevendeur}
+          className="text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
+        >
+          <p>{showroomData[language].buttonTextRevendeur}</p>
+   
+        </Link>
+          </div>
+
+        </div>
+
         </div>
     
       </div>
