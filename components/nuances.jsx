@@ -52,7 +52,7 @@ export default function Nuances({ nuancesData }) {
       },
       created(slider) {
       
-
+        // slider.size()
         setTimeout(() => {
           if (slider) {
             slider.update()
@@ -111,7 +111,7 @@ export default function Nuances({ nuancesData }) {
             <div key={slide._key} className="keen-slider__slide">
               {slide.mediaType === "image" && slide.image && (
                 <Image
-                className="object-cover h-full w-full"
+                className="object-cover h-screen w-full"
                   src={urlForImage(slide.image.asset._ref)}
                   alt="Details instruments"
                   width={1560}
@@ -121,7 +121,7 @@ export default function Nuances({ nuancesData }) {
               {slide.mediaType === "video" && slide.video && (
                 <video
                   src={slide.video}
-                  className="object-cover h-full w-full"
+                  className="object-cover h-screen w-full"
                   muted
                   autoPlay
                   loop
