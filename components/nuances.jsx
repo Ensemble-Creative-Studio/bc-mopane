@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import "keen-slider/keen-slider.min.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -65,6 +65,24 @@ export default function Nuances({ nuancesData }) {
     },
     [ThumbnailPlugin(instanceRef)]
   )
+  useEffect(() => {
+    const handleImageLoad = () => {
+      // Check if all images have loaded
+      const images = document.querySelectorAll(".keen-slider__slide img");
+      const loadedImages = Array.from(images).every((img) => img.complete);
+      if (loadedImages) {
+        setLoaded(true);
+      }
+    };
+
+    // Add event listener to handle image load
+    window.addEventListener("load", handleImageLoad);
+
+    return () => {
+      // Clean up the event listener
+      window.removeEventListener("load", handleImageLoad);
+    };
+  }, []);
 
   return (
     <div>
