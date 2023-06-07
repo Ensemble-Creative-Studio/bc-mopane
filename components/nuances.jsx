@@ -77,7 +77,7 @@ export default function Nuances({ nuancesData }) {
           {nuancesData[language].texte}
         </h5>
       </div>
-      <div className="navigation-wrapper md:px-36 md:relative md:grid md:grid-cols-12 md:gap-12 ">
+      <div className="navigation-wrapper md:px-36 md:relative md:grid md:grid-cols-12 md:gap-12 md:max-h-screen ">
         <div ref={sliderRef} className="keen-slider radiusDesktop md:col-span-full md:row-start-1 ">
           {nuancesData[0].slider.map((slide, index) => (
             <div key={slide._key} className="keen-slider__slide">

@@ -18,34 +18,33 @@ export default function Edition({ sonData }) {
   const videoRefs = useRef([]);
   const [isOffVisible, setIsOffVisible] = useState(true);
   const [isOnVisible, setIsOnVisible] = useState(false);
-
+  const { sound, setSound } = useContext(AnimationContext);
 // ...
+const [isMuted, setIsMuted] = useState(false); // Initialize muted
 
+// Add the following to handleAudioButtonClick function
 const handleAudioButtonClick = () => {
-  setIsOffVisible((prev) => {
-    videoRefs.current.forEach((video) => {
-      video.muted = !prev;
-    });
-    return !prev;
-  });
-
-  setIsOnVisible((prev) => {
-    videoRefs.current.forEach((video) => {
-      video.muted = prev;
-    });
-    return !prev;
+  setIsMuted(prevMuted => {
+    const newMuted = !prevMuted;
+    setIsOffVisible(!newMuted);
+    setIsOnVisible(newMuted);
+    return newMuted;
   });
 };
 
+
+// Change the first useEffect to the following
+useEffect(() => {
+  setIsMuted(sound !== 1);  // Mute videos if 'sound' from context isn't 1
+}, [sound]);
+
 useEffect(() => {
   videoRefs.current.forEach((video) => {
-    if (isOffVisible) {
-      video.removeAttribute("muted");
-    } else {
-      video.setAttribute("muted", true);
-    }
+    video.muted = isMuted; // Mute the video if isMuted state is true
   });
-}, [isOffVisible]);
+}, [isMuted]);
+
+
 // ...
 
   
@@ -287,14 +286,15 @@ useEffect(() => {
             </div>
           ))}
         </div>
-        <div className="absolute top-0 h-full w-full">
+        <div className="absolute top-0 h-full w-full  ">
+          <div className="video-son"></div>
           {sonData[0].videoSon.map((video, index) => (
             <video
               ref={(ref) => (videoRefs.current[index] = ref)}
               className="object-cover h-full absolute top-0 left-0 opacity-0 z-0 w-full  "
               key={video._key}
               src={video.url}
-              muted={isOffVisible}
+              muted={isMuted}
               loop
               playsInline
               autoPlay={false}

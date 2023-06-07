@@ -24,6 +24,9 @@
     width: 102% !important;
     transform: translateX(2%);
   }
+  .border-radius{
+    border-radius: 50%;
+  }
 }
 @font-face {
   font-family: "futura";
@@ -334,6 +337,18 @@ cursor: pointer;
 color: #FCFBF8;
 }
 
+
+.video-son{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  z-index: 5;
+}
+.OverflowVisible{
+  overflow: visible !important;
+}
 @media (min-width: 768px) {
   .backgroundLine::before,
   .backgroundLine::after {
@@ -385,4 +400,21 @@ color: #FCFBF8;
     border-radius: 1.5%;
     aspect-ratio: 1.26;
   }
+}
+@media (min-width: 1600px) {
+
+
+
+  .instrument1 {
+    top: -100px;
+  }
+  .instrument2 {
+    top: 31px;
+    right: 7.5vw;
+  }
+  .instrument3 {
+    top: 86px;
+    right: -7.5vw;
+  }
+ 
 }

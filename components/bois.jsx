@@ -145,10 +145,10 @@ export default function Bois({ boisData }) {
             <div className="flex items-center gap-6 md:col-start-2 col-end-13 md:gap-56 " key={index}>
               <div      ref={(ref) => {
                   imageOpacityRefs.current[index] = ref;
-                }} className="image-container w-20 h-20 md:h-full md:w-auto  md:opacity-0 ">
+                }} className="image-container w-20 h-20 md:h-full md:w-auto  md:opacity-0  ">
                 <Image
            
-                  className="flex-1 h-full w-full object-contain md:h-72 md:w-72"
+                  className="flex-1 h-full w-full object-contain md:h-72 md:w-72 border-radius"
                   priority
                   src={images[index]}
                   alt="Logo Buffet Crampon"
@@ -162,7 +162,7 @@ export default function Bois({ boisData }) {
                   <h4 className="text-40px font-thin md:text-132px">
                     {bois.densite}
                   </h4>
-                  <h5 className="text-24px -top-1 relative font-thin md:text-36px">
+                  <h5 className="text-24px -top-1 relative font-thin md:text-36px md:-top-9 md:-right-4">
                     {bois.unite}
                   </h5>
                 </div>

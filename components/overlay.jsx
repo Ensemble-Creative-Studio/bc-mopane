@@ -17,17 +17,22 @@ export default function Overlay({ overlayData }) {
   const { setIsAnimating } = useContext(AnimationContext);
   const [showOverlay, setShowOverlay] = useState(false);
   const { language, setLanguage } = useContext(AnimationContext);
-  const handleAudioButtonClick = () => {
+  const {sound, setSound} = useContext(AnimationContext);
+  const handleAudioButtonClick = (soundIndex) => {
     setIsAnimating(true);
     overlayRef.current.classList.add("removeOpacity");
     enterUpRef.current.classList.add("fade-out-up");
     enterDownRef.current.classList.add("fade-out-down");
     document.querySelector("body").style.overflow = "auto";
+    setSound(soundIndex)
   };
   const handleLanguageChange = (languageIndex) => {
     setLanguage(languageIndex);
     setShowOverlay(false);
   };
+  const handleSoundChange = (soundIndex) => {
+
+  }
   return (
     <div
       ref={overlayRef}
@@ -54,13 +59,14 @@ export default function Overlay({ overlayData }) {
           <div className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <p
               className="audio text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
-              onClick={handleAudioButtonClick}
+
+              onClick={() => handleAudioButtonClick(0)}
             >
               {overlayData[language].buttonMute}
             </p>
             <p
               className="audio text-center text-12px font-normal hover:text-soft-white hover:bg-soft-black uppercase border p-6 md:text-14px md:py-8 md:px-12 bg-soft-white text-black md:transition-all md:cursor-pointer"
-              onClick={handleAudioButtonClick}
+              onClick={() => handleAudioButtonClick(1)}
             >
               {overlayData[language].button}
             </p>

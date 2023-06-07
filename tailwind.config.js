@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'big': '1600px',
+        // => @media (min-width: 640px) { ... }
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -157,6 +161,14 @@ module.exports = {
           {
             lineHeight: "115%",
             fontWeight: "115",
+            letterSpacing: "-0.01em",
+          },
+        ],
+        "96px-edition-big": [
+          "9.6rem",
+          {
+            lineHeight: "117%",
+            fontWeight: "100",
             letterSpacing: "-0.01em",
           },
         ],

@@ -6,8 +6,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import divine from "../public/instruments/DIVINE.png";
-import r13 from "../public/instruments/LEGENDE.png";
-import  legende from "../public/instruments/R13.png";
+import legende from "../public/instruments/LEGENDE.png";
+import  r13 from "../public/instruments/R13.png";
 import { AnimationContext } from "./AnimationContext";
 
 export default function Edition({ editionData }) {
@@ -166,7 +166,7 @@ console.log(animatedOpacityRefs)
 
   return (
     <div ref={editionContainerRef}>
-      <div className="flex items-center h-screen edition text-28px md:text-64px ">
+      <div className="flex items-center h-screen edition text-28px md:text-64px big:text-96px-edition-big">
         <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
           {editionData[language].editionText.map((block, index) => (
             <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>

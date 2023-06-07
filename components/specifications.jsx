@@ -6,7 +6,7 @@ import Link from "next/link";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { urlForImage } from "../sanity/lib/image";
-import tosca from "../public/instruments/tosca90.png";
+import tosca from "../public/instruments/Tosca-Mopane.png";
 import legende from "../public/instruments/legende90.png";
 import r13 from "../public/instruments/R1390.png";
 import { AnimationContext } from "./AnimationContext";
@@ -173,14 +173,14 @@ export default function Specifications({ specificationData }) {
         </h3>
 
         <div className="navigation-wrapper pb-10 md:px-72 2xl:px-96 md:pb-16">
-          <div ref={sliderRefHorizontal} className="keen-slider ">
+          <div ref={sliderRefHorizontal} className="keen-slider OverflowVisible ">
             <div className="keen-slider__slide px-6 number-slide1">
               <div style={scaleStyle(0)}>
                 <Image
                   className="object-cover h-full w-full"
                   src={tosca}
                   alt="Instruments"
-         
+            priority
                 />
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function Specifications({ specificationData }) {
                   className="object-cover h-full w-full"
                   src={legende}
                   alt="Instruments"
-            
+                  priority
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ export default function Specifications({ specificationData }) {
                   className="object-cover h-full w-full"
                   src={r13}
                   alt="Instruments"
-         
+                  priority
                 />
               </div>
             </div>
