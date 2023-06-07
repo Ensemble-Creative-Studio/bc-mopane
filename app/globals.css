@@ -96,6 +96,9 @@ h5 {
 .transitionVideoInstrumentText {
   transition: all 0.6s;
 }
+.transitionVideoInstrumentText:hover {
+opacity: 1 !important;
+}
 .progress {
   background: #fcfbf8;
   height: 2px;

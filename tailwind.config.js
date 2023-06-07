@@ -21,21 +21,21 @@ module.exports = {
           "1rem",
           {
             lineHeight: "0.9rem",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "mobile-10px-spec": [
           "1rem",
           {
             letterSpacing: "0.08em",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "11px": [
           "1.1rem",
           {
             lineHeight: "0.9rem",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.06em",
           },
         ],
@@ -43,7 +43,7 @@ module.exports = {
           "1.1rem",
           {
             lineHeight: "0.9rem",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.1em",
           },
         ],
@@ -51,7 +51,7 @@ module.exports = {
           "1.2rem",
           {
             lineHeight: "100%",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.05em",
           },
         ],
@@ -59,7 +59,7 @@ module.exports = {
           "1.4rem",
           {
             lineHeight: "125%",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.02em",
           },
         ],
@@ -67,7 +67,7 @@ module.exports = {
           "1.4rem",
           {
             lineHeight: "145%",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.02em",
           },
         ],
@@ -83,7 +83,7 @@ module.exports = {
           "1.6rem",
           {
             lineHeight: "150%",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "16px-legale-titre": [
@@ -91,7 +91,7 @@ module.exports = {
           {
             
             lineHeight: "150%",
-            fontWeight: "400",
+            fontWeight: "300",
             letterSpacing: "0.06em",
 
           },
@@ -108,14 +108,14 @@ module.exports = {
           "2.1rem",
           {
             lineHeight: "100%",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "21px-line": [
           "2.1rem",
           {
             lineHeight: "150%",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "24px": [

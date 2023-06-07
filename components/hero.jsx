@@ -107,12 +107,12 @@ export default function Hero({ heroData }) {
             <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white md:px-36 md:gap-12">
               {heroData[0].instruments.map((instrument, index) => (
                 <div
-                  className="transitionVideoInstrumentText col-span-2"
+                  className="transitionVideoInstrumentText col-span-2 md:hover:opacity-100 md:transition-all"
                   key={instrument._key}
                   style={{ opacity: index === currentVideoIndex ? 1 : 0.5 }}
                 >
                   <p
-                    className="pb-2 cursor-pointer md:hover:font-medium md:transition-all"
+                    className="pb-2 cursor-pointer "
                     onClick={() => handleInstrumentClick(index)}
                   >
                     {instrument.instrument}
