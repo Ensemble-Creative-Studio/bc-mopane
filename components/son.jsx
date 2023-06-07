@@ -35,7 +35,18 @@ const handleAudioButtonClick = () => {
 
 // Change the first useEffect to the following
 useEffect(() => {
-  setIsMuted(sound !== 1);  // Mute videos if 'sound' from context isn't 1
+  setIsMuted(sound !== 1);
+  if (sound ==0){
+ 
+    setIsOnVisible(true); 
+    setIsOffVisible(false)
+  }
+  else{
+    setIsOnVisible(false); 
+    setIsOffVisible(true)
+  }
+
+   // Mute videos if 'sound' from context isn't 1
 }, [sound]);
 
 useEffect(() => {
@@ -121,7 +132,7 @@ useEffect(() => {
       trigger: editionContainer,
       start: "top top",
       pin: true,
-      end: "bottom+=2400px",
+      end: "bottom+=1300px",
       pinSpacing: true,
     });
     gsap.to(animatedOpacityRefs.current, {
@@ -129,7 +140,7 @@ useEffect(() => {
         trigger: editionContainer,
         scrub: false,
         start: "top top",
-        end: "bottom+=2400px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
+        end: "bottom+=1300px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
         onUpdate: (self) => {
           const progress = self.progress * 100;
           if (progress > 0 && progress < 5) {
@@ -165,9 +176,9 @@ useEffect(() => {
             gsap.to(videoRefs.current[1], { opacity: 0, duration: 0.5 });
             gsap.to(videoRefs.current[2], { opacity: 0, duration: 0.5 });
             gsap.to(videoRefs.current[3], { opacity: 0, duration: 0.5 });
-            videoRefs.current.forEach((video, index) => {
-              if (index !== 0) resetVideo(video);
-            });
+            // videoRefs.current.forEach((video, index) => {
+            //   if (index !== 0) resetVideo(video);
+            // });
             gsap.to(offRef.current, { opacity: 1, duration: 0.5 });
             gsap.to(onRef.current, { opacity: 1, duration: 0.5 });
           } else if (progress > 25 && progress < 50) {
@@ -176,15 +187,15 @@ useEffect(() => {
               duration: 0.5,
               color: "#FCFBF8",
             });
-            gsap.to(videoRefs.current[1], {
-              opacity: 1,
-              duration: 0.5,
-              onStart: () => playVideo(videoRefs.current[1]),
-            });
-            gsap.to(videoRefs.current[0], {
-              opacity: 0,
-              duration: 0.5,
-            });
+            // gsap.to(videoRefs.current[1], {
+            //   opacity: 1,
+            //   duration: 0.5,
+            //   onStart: () => playVideo(videoRefs.current[1]),
+            // });
+            // gsap.to(videoRefs.current[0], {
+            //   opacity: 0,
+            //   duration: 0.5,
+            // });
             gsap.to(
               [
                 ...defaultOpacityRefs.current,
@@ -196,20 +207,20 @@ useEffect(() => {
             );
             gsap.to(videoRefs.current[2], { opacity: 0, duration: 0.5 });
             gsap.to(videoRefs.current[3], { opacity: 0, duration: 0.5 });
-            videoRefs.current.forEach((video, index) => {
-              if (index !== 1) resetVideo(video);
-            });
+            // videoRefs.current.forEach((video, index) => {
+            //   if (index !== 1) resetVideo(video);
+            // });
           } else if (progress > 50 && progress < 75) {
             gsap.to(animatedOpacityRefs.current[2], {
               opacity: 1,
               duration: 0.5,
               color: "#FCFBF8",
             });
-            gsap.to(videoRefs.current[2], {
-              opacity: 1,
-              duration: 0.5,
-              onStart: () => playVideo(videoRefs.current[2]),
-            });
+            // gsap.to(videoRefs.current[2], {
+            //   opacity: 1,
+            //   duration: 0.5,
+            //   onStart: () => playVideo(videoRefs.current[2]),
+            // });
             gsap.to(
               [
                 ...defaultOpacityRefs.current,
@@ -221,20 +232,20 @@ useEffect(() => {
             );
             gsap.to(videoRefs.current[1], { opacity: 0, duration: 0.5 });
             gsap.to(videoRefs.current[3], { opacity: 0, duration: 0.5 });
-            videoRefs.current.forEach((video, index) => {
-              if (index !== 2) resetVideo(video);
-            });
+            // videoRefs.current.forEach((video, index) => {
+            //   if (index !== 2) resetVideo(video);
+            // });
           } else if (progress > 75 && progress < 98) {
             gsap.to(animatedOpacityRefs.current[3], {
               opacity: 1,
               duration: 0.5,
               color: "#FCFBF8",
             });
-            gsap.to(videoRefs.current[3], {
-              opacity: 1,
-              duration: 0.5,
-              onStart: () => playVideo(videoRefs.current[3]),
-            });
+            // gsap.to(videoRefs.current[3], {
+            //   opacity: 1,
+            //   duration: 0.5,
+            //   onStart: () => playVideo(videoRefs.current[3]),
+            // });
             gsap.to(
               [
                 ...defaultOpacityRefs.current,
@@ -245,9 +256,9 @@ useEffect(() => {
               { opacity: 0.3, duration: 0.5, color: "#FCFBF8" }
             );
             gsap.to(videoRefs.current[2], { opacity: 0, duration: 0.5 });
-            videoRefs.current.forEach((video, index) => {
-              if (index !== 3) resetVideo(video);
-            });
+            // videoRefs.current.forEach((video, index) => {
+            //   if (index !== 3) resetVideo(video);
+            // });
             gsap.to(offRef.current, { opacity: 1, duration: 0.5 });
             gsap.to(onRef.current, { opacity: 1, duration: 0.5 });
           } else if (progress === 100) {

@@ -66,7 +66,7 @@ console.log(animatedOpacityRefs)
       trigger: editionContainer,
       start: "top top",
       pin: true,
-      end: "bottom+=1200px",
+      end: "bottom+=800px",
       pinSpacing: true,
     });
 
@@ -77,7 +77,7 @@ console.log(animatedOpacityRefs)
         trigger: editionContainer,
         scrub: false,
         start: "top top",
-        end: "bottom+=1200px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
+        end: "bottom+=800px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
         onUpdate: (self) => {
           const progress = self.progress * 100;
           if (progress > 0 && progress < 5) {
@@ -94,8 +94,8 @@ console.log(animatedOpacityRefs)
               { opacity:'0', duration: 0.5 }
             );
           } else if (progress > 5 && progress < 30) {
-            gsap.to([animatedOpacityRefs.current[0], animatedOpacityRefs.current[6]], {
-              opacity: 1,
+            gsap.to([animatedOpacityRefs.current[0]], {
+              color: '  #FCFBF8',
               duration: 0.5,
             });
             gsap.to(
@@ -103,8 +103,7 @@ console.log(animatedOpacityRefs)
                 ...defaultOpacityRefs.current,
                 animatedOpacityRefs.current[1],
                 animatedOpacityRefs.current[2],
-                animatedOpacityRefs.current[7],
-                animatedOpacityRefs.current[8],
+               
               ],
               { color: '    #726F6A', duration: 0.5 }
             );
@@ -167,7 +166,7 @@ console.log(animatedOpacityRefs)
   return (
     <div ref={editionContainerRef}>
       <div className="flex items-center h-screen edition text-28px md:text-64px big:text-96px-edition-big">
-        <div className="relative backgroundLine text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
+        <div className="relative  text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
           {editionData[language].editionText.map((block, index) => (
             <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>
               {renderText(block.children, index)}

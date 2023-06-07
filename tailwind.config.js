@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'big': '1600px',
+        'big': '1800px',
         // => @media (min-width: 640px) { ... }
       },
       backgroundImage: {
@@ -77,6 +77,23 @@ module.exports = {
             lineHeight: "100%",
             fontWeight: "200",
             letterSpacing: "0.06em",
+          },
+        ],
+        "16px-legale": [
+          "1.6rem",
+          {
+            lineHeight: "150%",
+            fontWeight: "400",
+          },
+        ],
+        "16px-legale-titre": [
+          "1.6rem",
+          {
+            
+            lineHeight: "150%",
+            fontWeight: "400",
+            letterSpacing: "0.06em",
+
           },
         ],
         "16pxCustomline": [
@@ -165,7 +182,7 @@ module.exports = {
           },
         ],
         "96px-edition-big": [
-          "9.6rem",
+          "9rem",
           {
             lineHeight: "117%",
             fontWeight: "100",

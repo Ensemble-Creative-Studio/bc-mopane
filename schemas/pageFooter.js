@@ -35,6 +35,7 @@ export default {
       name: "editionText",
       type: "blockContent",
       title: "Texte",
+      description:'Only use H3, p and Bold to style the text',
       rows: 5,
     },
   ],

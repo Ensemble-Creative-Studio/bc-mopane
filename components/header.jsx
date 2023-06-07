@@ -54,16 +54,18 @@ export default function Header({ headerData }) {
       onMouseLeave={() => setHideHeader(true)}
     >
       <header
-        className="text-10px flex justify-between items-center h-36 text-white uppercase px-6  w-full top-0  md:text-11px md:px-12 md:h-60"
+        className="text-10px home flex justify-between items-center h-36 text-white uppercase px-6  w-full top-0  md:text-11px md:px-12 md:h-60"
         style={{
           transform: hideHeader ? "translateY(-100%)" : "translateY(0)",
           transition: "transform 0.2s ease",
         }}
       >
-        <Link href={urlRevendeur} className="flex-1 block md:hidden">
+        <Link target="_blank" href={urlRevendeur} className="flex-1 block md:hidden">
           {revendeurMobile}
+          
         </Link>
         <Link
+        target="_blank"
           href={urlRevendeur}
           className="flex-1 hidden md:block md:relative md:-top-10"
         >

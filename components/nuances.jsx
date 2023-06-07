@@ -70,7 +70,7 @@ export default function Nuances({ nuancesData }) {
     <div>
     <div className="h-screen bg-soft-black pt-32 flex flex-col justify-between md:min-h-screen md:h-auto md:pt-60">
       <div className="md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-40">
-        <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0">
+        <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0 max-width-500">
           {nuancesData[language].titre}
         </h3>
         <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 md:pt-16 " >

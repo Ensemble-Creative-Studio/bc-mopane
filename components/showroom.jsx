@@ -27,6 +27,7 @@ export default function Showroom({ showroomData }) {
         <div >
           <div className="flex md:gap-12 md:mt-24">
           <Link
+                  target="_blank"
           href={showroomData[language].buttonUrl}
           className="text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
         >
@@ -34,6 +35,7 @@ export default function Showroom({ showroomData }) {
    
         </Link>
         <Link
+                target="_blank"
           href={showroomData[language].buttonUrlRevendeur}
           className="text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
         >

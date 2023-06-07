@@ -24,6 +24,7 @@ export default function Overlay({ overlayData }) {
     enterUpRef.current.classList.add("fade-out-up");
     enterDownRef.current.classList.add("fade-out-down");
     document.querySelector("body").style.overflow = "auto";
+    document.querySelector("main").style.overflowX = "hidden";
     setSound(soundIndex)
   };
   const handleLanguageChange = (languageIndex) => {
