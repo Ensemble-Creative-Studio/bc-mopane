@@ -25,7 +25,7 @@ export default function Showroom({ showroomData }) {
           {showroomData[language].titre}
         </h3>
         <div >
-          <div className="flex md:gap-12 md:mt-24 flex-col md:flex-row gap-6 pt-8 md:pt-0">
+          <div className="flex md:gap-12 md:mt-24 flex-col md:flex-row gap-6 pt-10 md:pt-0">
           <Link
                   target="_blank"
           href={showroomData[language].buttonUrl}

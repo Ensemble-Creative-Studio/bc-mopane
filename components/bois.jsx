@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef, useContext } from "react";
+import React, { useLayoutEffect, useRef, useContext, useState, useEffect } from "react";
 import Image from "next/image";
 import img0 from "../public/bois/img-0.png";
 import img1 from "../public/bois/img-1.png";
@@ -16,10 +16,18 @@ export default function Bois({ boisData }) {
   const contentRefs = useRef([]);
   const opacityRefs = useRef([]);
   const imageOpacityRefs  = useRef([]);
+  const [useAOS, setUseAOS] = useState(false);
 
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setUseAOS(true);
+      AOS.init();
+    }
+  }, []);
   useLayoutEffect(() => {
     
     gsap.registerPlugin(ScrollTrigger);
+    
     if (typeof window !== "undefined" && window.innerWidth > 768) {
     const editionContainer = editionContainerRef.current;
 
@@ -125,11 +133,20 @@ export default function Bois({ boisData }) {
       gsap.killTweensOf(contentRefs.current);
     };
   }
-  else{
-    AOS.init();
-  }
+
 }, [boisData]);
 
+const getAosProps = () => {
+  if (useAOS) {
+    return {
+      "data-aos": "fade-in-up",
+      "data-aos-duration": '1000',
+      "data-aos-easing": "new-easing",
+      "data-aos-offset": "100",
+      "data-aos-once": "false"
+    };
+  }
+}
   return (
     <div ref={editionContainerRef} className="h-screen bg-soft-black md:min-h-screen md:h-auto md:pb-40">
       <div className="pt-36 text-soft-white px-6 pb-16 md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64 ">
@@ -142,7 +159,7 @@ export default function Bois({ boisData }) {
       </div>
       <div className="px-6 flex gap-14 flex-col md:gap-32 md:px-0" >
         {boisData[language].bois.map((bois, index) => (
-          <div data-aos="fade-in-up"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="100"  data-aos-once="false" 
+          <div     {...getAosProps()}
             ref={(ref) => {
               contentRefs.current[index] = ref;
             }}
