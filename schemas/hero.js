@@ -26,6 +26,7 @@ export default {
         name: 'instruments',
         type: 'array',
         title: 'Instruments',
+        description:' JE NE SAIS PAS QUI CHANGE CA SANS CESSE BUT PLZ NE PAS LE FAIRE POUR L INSTANT',
         of: [
           {
             type: 'object',

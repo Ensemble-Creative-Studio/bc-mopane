@@ -109,7 +109,17 @@ export default {
     {
         name: "buttonUrl",
         type: "url",
-        title: "url du bouton",
+        title: "url du bouton Tosca",
+      },
+    {
+        name: "buttonUrllegende",
+        type: "url",
+        title: "url du bouton Legende",
+      },
+    {
+        name: "buttonUrllegendeR13",
+        type: "url",
+        title: "url du bouton R13",
       },
   ],
 };

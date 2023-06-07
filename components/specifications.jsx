@@ -56,6 +56,12 @@ export default function Specifications({ specificationData }) {
   const [loaded, setLoaded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [details, setDetails] = useState(null);
+  const buttonUrls = [
+    specificationData[language].buttonUrl,
+    specificationData[language].buttonUrllegende,
+    specificationData[language].buttonUrllegendeR13,
+  ];
+  
   const [sliderRefHorizontal, instanceRef] = useKeenSlider({
     initial: 0,
     detailsChanged(s) {
@@ -321,13 +327,14 @@ export default function Specifications({ specificationData }) {
         </div>
         <div className=" md:px-36 md:grid md:grid-cols-12 md:gap-12 ">
           <Link
-            href={specificationData[language].buttonUrl}
+        href={buttonUrls[currentSlide]}
             className="flex-1 mt-8  flex  mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase md:col-start-6 col-end-8"
           >
             <p className="text-12px text-soft-white ">
               {specificationData[language].button}
             </p>
           </Link>
+
         </div>
       </div>
     </div>

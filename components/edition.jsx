@@ -19,7 +19,7 @@ export default function Edition({ editionData }) {
   const instrument1Ref = useRef(null);
   const instrument2Ref = useRef(null);
   const instrument3Ref = useRef(null);
-console.log(animatedOpacityRefs)
+
 
   const renderText = (textArray, index) => {
     return (

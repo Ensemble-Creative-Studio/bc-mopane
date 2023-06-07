@@ -16,11 +16,34 @@ export default function Edition({ sonData }) {
   const offRef  = useRef([]);
   const onRef  = useRef([]);
   const videoRefs = useRef([]);
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+  
   const [isOffVisible, setIsOffVisible] = useState(true);
   const [isOnVisible, setIsOnVisible] = useState(false);
   const { sound, setSound } = useContext(AnimationContext);
+  
 // ...
 const [isMuted, setIsMuted] = useState(false); // Initialize muted
+
+useEffect(() => {
+  function handleResize() {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }
+
+  window.addEventListener("resize", handleResize);
+
+  // Call handler right away so state gets updated with initial window size
+  handleResize();
+
+  // Remove event listener on cleanup
+  return () => window.removeEventListener("resize", handleResize);
+}, []); // Empty array means this effect runs once on mount and cleanup on unmount
 
 // Add the following to handleAudioButtonClick function
 const handleAudioButtonClick = () => {
@@ -69,8 +92,9 @@ useEffect(() => {
   };
 
   const renderText = (textArray, index) => {
+    let offsetValue = windowSize.width > 768 ? 350 : 100;
     return (
-      <div data-aos="fade-in-up"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="350"  data-aos-once="false" ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
+      <div data-aos="fade-in-up"  data-aos-duration='1000' data-aos-easing="new-easing"   data-aos-offset={offsetValue} data-aos-once="false" ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
         {textArray.map((textItem, i) => {
           if (textItem._type === "span") {
             if (textItem.marks.includes("strong")) {

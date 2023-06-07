@@ -7,6 +7,8 @@ import img2 from "../public/bois/img-2.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { AnimationContext } from "./AnimationContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function Bois({ boisData }) {
   const { language, setLanguage } = useContext(AnimationContext);
   const images = [img0, img1, img2];
@@ -16,8 +18,9 @@ export default function Bois({ boisData }) {
   const imageOpacityRefs  = useRef([]);
 
   useLayoutEffect(() => {
+    
     gsap.registerPlugin(ScrollTrigger);
-
+    if (typeof window !== "undefined" && window.innerWidth > 768) {
     const editionContainer = editionContainerRef.current;
 
     // Creating the scroll trigger for pinning
@@ -121,7 +124,11 @@ export default function Bois({ boisData }) {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.killTweensOf(contentRefs.current);
     };
-  }, [boisData]);
+  }
+  else{
+    AOS.init();
+  }
+}, [boisData]);
 
   return (
     <div ref={editionContainerRef} className="h-screen bg-soft-black md:min-h-screen md:h-auto md:pb-40">
@@ -135,11 +142,11 @@ export default function Bois({ boisData }) {
       </div>
       <div className="px-6 flex gap-14 flex-col md:gap-32 md:px-0" >
         {boisData[language].bois.map((bois, index) => (
-          <div
+          <div data-aos="fade-in-up"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="100"  data-aos-once="false" 
             ref={(ref) => {
               contentRefs.current[index] = ref;
             }}
-            className="md:grid md:grid-cols-12 md:gap-12  md:pl-36 -translate-x-20"
+            className="md:grid md:grid-cols-12 md:gap-12  md:pl-36 md:-translate-x-20"
             key={index}
           >
             <div className="flex items-center gap-6 md:col-start-2 col-end-13 md:gap-56 " key={index}>

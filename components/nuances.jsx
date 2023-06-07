@@ -101,7 +101,7 @@ export default function Nuances({ nuancesData }) {
         <h3 className="text-28px text-soft-white w-1/2 px-6 pb-10 font-extralight md:text-64px md:col-start-1 md:col-end-6 md:w-full md:px-0 max-width-500">
           {nuancesData[language].titre}
         </h3>
-        <h5 className="text-16pxCustomline text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 md:pt-16 " >
+        <h5 className="text-16pxCustomline pb-16 md:pb-0 text-white px-6 font-extralight md:text-21px-line md:col-start-7 md:col-end-13 md:px-0 md:pt-16 " >
           {nuancesData[language].texte}
         </h5>
       </div>
@@ -111,7 +111,7 @@ export default function Nuances({ nuancesData }) {
             <div key={slide._key} className="keen-slider__slide">
               {slide.mediaType === "image" && slide.image && (
                 <Image
-                className="object-cover h-screen w-full"
+                className="object-cover h-full md:h-screen w-full"
                   src={urlForImage(slide.image.asset._ref)}
                   alt="Details instruments"
                   width={1560}
