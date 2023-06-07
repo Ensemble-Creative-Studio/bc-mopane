@@ -241,11 +241,11 @@ useEffect(() => {
               duration: 0.5,
               color: "#FCFBF8",
             });
-            // gsap.to(videoRefs.current[3], {
-            //   opacity: 1,
-            //   duration: 0.5,
-            //   onStart: () => playVideo(videoRefs.current[3]),
-            // });
+            gsap.to(videoRefs.current[0], {
+              opacity: 1,
+              duration: 0.5,
+              onComplete: () => playVideo(videoRefs.current[0]),
+            });
             gsap.to(
               [
                 ...defaultOpacityRefs.current,
@@ -266,9 +266,9 @@ useEffect(() => {
               [...defaultOpacityRefs.current, ...animatedOpacityRefs.current],
               { opacity: 1, duration: 0.5, color: "#FCFBF8" }
             );
-            gsap.to(videoRefs.current[3], { opacity: 0, duration: 0.5 });
+            gsap.to(videoRefs.current[0], { opacity: 0, duration: 0.5 });
             videoRefs.current.forEach((video, index) => {
-              if (index == 3) resetVideo(video);
+              resetVideo(video);
             });
             gsap.to(offRef.current, { opacity: 0, duration: 0.5 });
             gsap.to(onRef.current, { opacity: 0, duration: 0.5 });
