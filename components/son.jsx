@@ -97,7 +97,7 @@ useEffect(() => {
         })}
         <Image
         ref={offRef}
-        className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 ${
+        className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 opacity-0 ${
           isOffVisible ? "inline" : "hidden"
         }`}
           priority
@@ -107,7 +107,7 @@ useEffect(() => {
         />
         <Image
               ref={onRef}
-              className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 ${
+              className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 opacity-0 ${
                 isOnVisible ? "inline" : "hidden"
               }`}
           priority
@@ -132,7 +132,7 @@ useEffect(() => {
       trigger: editionContainer,
       start: "top top",
       pin: true,
-      end: "bottom+=1300px",
+      end: "bottom+=1400px",
       pinSpacing: true,
     });
     gsap.to(animatedOpacityRefs.current, {
@@ -140,7 +140,7 @@ useEffect(() => {
         trigger: editionContainer,
         scrub: false,
         start: "top top",
-        end: "bottom+=1300px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
+        end: "bottom+=1400px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
         onUpdate: (self) => {
           const progress = self.progress * 100;
           if (progress > 0 && progress < 5) {
@@ -244,7 +244,7 @@ useEffect(() => {
             gsap.to(videoRefs.current[0], {
               opacity: 1,
               duration: 0.5,
-              onComplete: () => playVideo(videoRefs.current[0]),
+              onStart: () => playVideo(videoRefs.current[0]),
             });
             gsap.to(
               [
