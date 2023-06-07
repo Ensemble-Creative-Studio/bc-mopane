@@ -50,7 +50,16 @@ export default function Nuances({ nuancesData }) {
     slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel)
       },
-      created() {
+      created(slider) {
+      
+
+        setTimeout(() => {
+          if (slider) {
+            slider.update()
+        
+    
+          }
+        }, 5000);
         setLoaded(true);
       },
     
@@ -74,6 +83,7 @@ export default function Nuances({ nuancesData }) {
         setLoaded(true);
       }
     };
+ 
 
     // Add event listener to handle image load
     window.addEventListener("load", handleImageLoad);
