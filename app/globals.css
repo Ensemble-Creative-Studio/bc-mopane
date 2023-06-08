@@ -356,6 +356,18 @@ color: #FCFBF8;
 .OverflowVisible{
   overflow: visible !important;
 }
+
+.rollupHover:hover p{
+  transform: translateY(-100%);
+  transition: 0.2s ease all;
+}
+.rollupHover p{
+  transform: translateY(0%);
+  transition: 0.2s ease all;
+}
+.rollupHover {
+  transition: 0.2s ease all;
+}
 @media (min-width: 768px) {
   .backgroundLine::before,
   .backgroundLine::after {
