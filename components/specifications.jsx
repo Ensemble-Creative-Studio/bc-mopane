@@ -333,6 +333,7 @@ export default function Specifications({ specificationData }) {
         </div>
         <div className=" md:px-36 md:grid md:grid-cols-12 md:gap-12 ">
           <Link
+          target="_blank"
         href={buttonUrls[currentSlide]}
             className="flex-1 mt-8  flex  mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase md:col-start-6 col-end-8"
           >
