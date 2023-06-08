@@ -305,7 +305,7 @@ body[data-aos-easing="new-easing"] [data-aos],
   backdrop-filter: blur(16px);
   padding: 42px 9px 6px 24px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   text-align: center;
   border-radius: 6px;
   top: -1.2rem;
@@ -317,7 +317,7 @@ body[data-aos-easing="new-easing"] [data-aos],
   backdrop-filter: blur(16px);
   padding: 42px 9px 6px 24px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   text-align: center;
   border-radius: 6px;
   top: -1.2rem;

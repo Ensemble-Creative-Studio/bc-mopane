@@ -16,6 +16,12 @@ export default function Video({ video360Data }) {
   const instrument1Ref = useRef(null);
   const instrument2Ref = useRef(null);
   const instrument3Ref = useRef(null);
+  const overlayDataObj = {};
+  for (let i = 0; i < video360Data.length; i++) {
+    const entry = video360Data[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
+
+  }
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -128,7 +134,7 @@ export default function Video({ video360Data }) {
       gsap.killTweensOf(contentRefs.current);
       gsap.killTweensOf(defaultOpacityRefs.current);
     };
-  }, [video360Data]);
+  }, [video360Data, language]);
 
   return (
     <div ref={editionContainerRef}>
@@ -150,9 +156,9 @@ export default function Video({ video360Data }) {
           </div>
         </div>
         <div className="relative z-10 pt-16  flex-1 font-extralight  ESFace text-28px md:text-64px md:col-start-8 md:col-end-13">
-          <h2 className="text-soft-white pb-6 pr-8 md:pb-12 md:pr-20 md:widthoverlay">{video360Data[language].titre}</h2>
+          <h2 className="text-soft-white pb-6 pr-8 md:pb-12 md:pr-20 md:widthoverlay">{overlayDataObj[language]?.titre}</h2>
           <div id="ed-face">
-            {video360Data[language].bulletPoint.map((bullet, index) => (
+            {overlayDataObj[language]?.bulletPoint.map((bullet, index) => (
               <p
                 className=" opacity-0 pb-3 uppercase text-12px text-soft-grey font-normal md:text-21px md:pb-8"
                 key={bullet._key}

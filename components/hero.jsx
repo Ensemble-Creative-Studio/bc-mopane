@@ -10,7 +10,12 @@ export default function Hero({ heroData }) {
   const { isAnimating } = useContext(AnimationContext);
   const { language, setLanguage } = useContext(AnimationContext);
   const [playingIndex, setPlayingIndex] = useState(null);
+  const overlayDataObj = {};
+  for (let i = 0; i < heroData.length; i++) {
+    const entry = heroData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
 
+  }
   const handleVideoEnded = () => {
     setTimeout(() => {
       setProgresses((prevProgresses) => {
@@ -20,7 +25,7 @@ export default function Hero({ heroData }) {
       });
     }, 100);
     setCurrentVideoIndex(
-      (prevIndex) => (prevIndex + 1) % heroData[0].instruments.length
+      (prevIndex) => (prevIndex + 1) % overlayDataObj[language]?.instruments.length
     );
   };
 
@@ -71,7 +76,7 @@ export default function Hero({ heroData }) {
 
 
   const heroText = {
-    0: heroData[0].herotext,
+    0: overlayDataObj[language]?.herotext,
     1: heroData[1].herotext,
   };
   return (
@@ -84,7 +89,7 @@ export default function Hero({ heroData }) {
                 isAnimating ? "enter-downAnimDelay" : ""
               }`}
             >
-              {heroData[language].herotext}
+              {overlayDataObj[language]?.herotext}
             </h1>
             {heroData[0].instruments.map((instrument, index) => (
               <video
@@ -105,7 +110,7 @@ export default function Hero({ heroData }) {
               />
             ))}
             <div className="h-28 text-11px uppercase absolute bottom-0 grid grid-cols-6 gap-6 justify-between w-full px-6 text-white md:px-36 md:gap-12">
-              {heroData[0].instruments.map((instrument, index) => (
+              {overlayDataObj[language]?.instruments.map((instrument, index) => (
                 <div
                   className="transitionVideoInstrumentText col-span-2 md:hover:opacity-100 md:transition-all"
                   key={instrument._key}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useContext } from "react";
-import Link from "next/link";
+
 import { getHeader } from "../sanity/sanity-util";
 import Image from "next/image";
 import { useRef } from "react";
@@ -17,7 +17,15 @@ export default function Overlay({ overlayData }) {
   const { setIsAnimating } = useContext(AnimationContext);
   const [showOverlay, setShowOverlay] = useState(false);
   const { language, setLanguage } = useContext(AnimationContext);
-  const {sound, setSound} = useContext(AnimationContext);
+  
+  const { sound, setSound } = useContext(AnimationContext);
+
+  const overlayDataObj = {};
+  for (let i = 0; i < overlayData.length; i++) {
+    const entry = overlayData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
+
+  }
   const handleAudioButtonClick = (soundIndex) => {
     setIsAnimating(true);
     overlayRef.current.classList.add("removeOpacity");
@@ -25,15 +33,14 @@ export default function Overlay({ overlayData }) {
     enterDownRef.current.classList.add("fade-out-down");
     document.querySelector("body").style.overflow = "auto";
     document.querySelector("main").style.overflowX = "hidden";
-    setSound(soundIndex)
+    setSound(soundIndex);
   };
-  const handleLanguageChange = (languageIndex) => {
-    setLanguage(languageIndex);
+  const handleLanguageChange = (languageCode) => {
+    setLanguage(languageCode);
     setShowOverlay(false);
+   
   };
-  const handleSoundChange = (soundIndex) => {
-
-  }
+  const handleSoundChange = (soundIndex) => {};
   return (
     <div
       ref={overlayRef}
@@ -55,21 +62,20 @@ export default function Overlay({ overlayData }) {
         </div>
         <div ref={enterDownRef} className="enter opacity-0 enter-downAnim">
           <p className="text-14px-overlay text-center pb-8 pt-12 px-6 text-white md:widthoverlay md:text-16pxCustomline md:pt-24">
-            {overlayData[language].text}
+            {overlayDataObj[language]?.text}
           </p>
           <div className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <p
               className="audio text-center text-12px font-normal text-soft-white uppercase border p-6 md:text-14px md:py-8 md:px-12 md:hover:bg-soft-white md:hover:text-black md:transition-all md:cursor-pointer"
-
               onClick={() => handleAudioButtonClick(0)}
             >
-              {overlayData[language].buttonMute}
+              {overlayDataObj[language]?.buttonMute}
             </p>
             <p
               className="audio text-center text-12px font-normal hover:text-soft-white hover:bg-soft-black uppercase border p-6 md:text-14px md:py-8 md:px-12 bg-soft-white text-black md:transition-all md:cursor-pointer"
               onClick={() => handleAudioButtonClick(1)}
             >
-              {overlayData[language].button}
+              {overlayDataObj[language]?.button}
             </p>
           </div>
         </div>
@@ -87,13 +93,13 @@ export default function Overlay({ overlayData }) {
           <div className="language-overlay absolute bg-black flex flex-col">
             <div className="flex">
               <p
-                onClick={() => handleLanguageChange(1)}
-                className={language === 1 ? "active" : ""}
-                style={{ opacity: language === 1 ? 1 : 0.3 }}
+                onClick={() => handleLanguageChange("en")}
+                className={language === 'en' ? "active" : ""}
+                style={{ opacity: language === 'en' ? 1 : 0.3 }}
               >
                 English
               </p>
-              {language === 1 && (
+              {language === 'en' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
                   priority
@@ -104,13 +110,47 @@ export default function Overlay({ overlayData }) {
             </div>
             <div className="flex">
               <p
-                onClick={() => handleLanguageChange(0)}
-                className={language === 0 ? "active" : ""}
-                style={{ opacity: language === 0 ? 1 : 0.3 }}
+                onClick={() => handleLanguageChange("fr")}
+                className={language === 'fr' ? "active" : ""}
+                style={{ opacity: language === 'fr' ? 1 : 0.3 }}
               >
                 Français
               </p>
-              {language === 0 && (
+              {language === 'fr' && (
+                <Image
+                  className="w-4 h-4 ml-2 object-contain"
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
+            <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("de")}
+                className={language === 'de' ? "active" : ""}
+                style={{ opacity: language === 'de' ? 1 : 0.3 }}
+              >
+                Deutsch
+              </p>
+              {language === 'de' && (
+                <Image
+                  className="w-4 h-4 ml-2 object-contain"
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
+            <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("ja")}
+                className={language === 'ja' ? "active" : ""}
+                style={{ opacity: language === 'ja' ? 1 : 0.3 }}
+              >
+                日本
+              </p>
+              {language === 'ja' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
                   priority

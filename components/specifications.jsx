@@ -56,10 +56,16 @@ export default function Specifications({ specificationData }) {
   const [loaded, setLoaded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [details, setDetails] = useState(null);
+  const overlayDataObj = {};
+  for (let i = 0; i < specificationData.length; i++) {
+    const entry = specificationData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
+
+  }
   const buttonUrls = [
-    specificationData[language].buttonUrl,
-    specificationData[language].buttonUrllegende,
-    specificationData[language].buttonUrllegendeR13,
+    overlayDataObj[language]?.buttonUrl,
+    overlayDataObj[language]?.buttonUrllegende,
+    overlayDataObj[language]?.buttonUrllegendeR13,
   ];
   
   const [sliderRefHorizontal, instanceRef] = useKeenSlider({
@@ -175,7 +181,7 @@ export default function Specifications({ specificationData }) {
     <div className="h-auto bg-opacity-white ">
       <div className=" padding-vh-mobile items-center justify-between  ">
         <h3 className="text-28px text-soft-black-text text-center px-6 font-extralight md:px-36 md:text-64px max-width-desktop md:m-auto ">
-          {specificationData[language].titre}
+          {overlayDataObj[language]?.titre}
         </h3>
 
         <div className="navigation-wrapper pb-10 md:px-72 2xl:px-96 md:pb-16">
@@ -237,8 +243,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[language].specificationsTosca
-              : specificationData[language].specificationsTosca.slice(0, 2)
+              ? overlayDataObj[language]?.specificationsTosca
+              : overlayDataObj[language]?.specificationsTosca.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -257,8 +263,8 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[language].moins
-                  : specificationData[language].suite}{" "}
+                  ? overlayDataObj[language]?.moins
+                  : overlayDataObj[language]?.suite}{" "}
               </button>
             </div>
           </div>
@@ -268,8 +274,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[language].specificationsLegende
-              : specificationData[language].specificationsLegende.slice(0, 2)
+              ? overlayDataObj[language]?.specificationsLegende
+              : overlayDataObj[language]?.specificationsLegende.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -288,8 +294,8 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[language].moins
-                  : specificationData[language].suite}{" "}
+                  ? overlayDataObj[language]?.moins
+                  : overlayDataObj[language]?.suite}{" "}
               </button>
             </div>
           </div>
@@ -299,8 +305,8 @@ export default function Specifications({ specificationData }) {
           >
             {/* Slice the array to the first two elements or all depending on showMore */}
             {(showMore
-              ? specificationData[language].specificationsR13
-              : specificationData[language].specificationsR13.slice(0, 2)
+              ? overlayDataObj[language]?.specificationsR13
+              : overlayDataObj[language]?.specificationsR13.slice(0, 2)
             ).map((specification, index) => (
               <div
                 className="details-technique md:pb-6"
@@ -319,8 +325,8 @@ export default function Specifications({ specificationData }) {
                 className="text-14px text-mid-grey text-center"
               >
                 {showMore
-                  ? specificationData[language].moins
-                  : specificationData[language].suite}{" "}
+                  ? overlayDataObj[language]?.moins
+                  : overlayDataObj[language]?.suite}{" "}
               </button>
             </div>
           </div>
@@ -331,7 +337,7 @@ export default function Specifications({ specificationData }) {
             className="flex-1 mt-8  flex  mx-6 text-center h-20 bg-soft-black-text  items-center justify-center uppercase md:col-start-6 col-end-8"
           >
             <p className="text-12px text-soft-white ">
-              {specificationData[language].button}
+              {overlayDataObj[language]?.button}
             </p>
           </Link>
 

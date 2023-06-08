@@ -28,6 +28,13 @@ export default function Edition({ sonData }) {
 // ...
 const [isMuted, setIsMuted] = useState(false); // Initialize muted
 
+
+const overlayDataObj = {};
+for (let i = 0; i < sonData.length; i++) {
+  const entry = sonData[i];
+  overlayDataObj[entry.__i18n_lang] = entry;
+
+}
 useEffect(() => {
   function handleResize() {
     setWindowSize({
@@ -315,7 +322,7 @@ useEffect(() => {
     <div ref={sonContainerRef}>
       <div className="flex relative items-end h-screen text-36px bg-soft-black pr-12 md:text-96px-line md:px-36 md:grid md:grid-cols-12 md:gap-12">
         <div className="relative  text-opacity-white ESFace font-extralight pb-16 px-6 z-10 md:col-start-1 md:col-end-9 md:self-center">
-          {sonData[language].sonText.map((block, index) => (
+          {overlayDataObj[language]?.sonText.map((block, index) => (
             <div className="col-start-2 col-end-7" key={block._key}>
               {renderText(block.children, index)}
             </div>

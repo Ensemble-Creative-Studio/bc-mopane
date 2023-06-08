@@ -17,6 +17,13 @@ export default function Bois({ boisData }) {
   const opacityRefs = useRef([]);
   const imageOpacityRefs  = useRef([]);
   const [useAOS, setUseAOS] = useState(false);
+  const overlayDataObj = {};
+  for (let i = 0; i < boisData.length; i++) {
+    const entry = boisData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
+
+  }
+
 
   useEffect(() => {
     if (window.innerWidth <= 768) {
@@ -131,10 +138,15 @@ export default function Bois({ boisData }) {
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.killTweensOf(contentRefs.current);
+      editionContainerRef.current = [];  // Resetting the references
+      contentRefs.current = [];  // Resetting the references
+      contentRefs.current = [];  // Resetting the references
+      imageOpacityRefs.current = [];  // Resetting the references
+
     };
   }
 
-}, [boisData]);
+}, [boisData, language]);
 
 const getAosProps = () => {
   if (useAOS) {
@@ -147,18 +159,19 @@ const getAosProps = () => {
     };
   }
 }
+console.log(imageOpacityRefs)
   return (
     <div ref={editionContainerRef} className="h-screen bg-soft-black md:min-h-screen md:h-auto md:pb-40">
       <div className="pt-36 text-soft-white px-6 pb-16 md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64 ">
         <div className="flex flex-col md:col-start-2 md:col-end-9 ">
           <p className="text-12px md:text-21px pb-3 uppercase">
-            {boisData[language].boisTitre}
+            {  overlayDataObj[language]?.boisTitre}
           </p>
-          <h3 className="text-24px md:text-64px">{boisData[language].boisPhrase}</h3>
+          <h3 className="text-24px md:text-64px">{  overlayDataObj[language]?.boisPhrase}</h3>
         </div>
       </div>
       <div className="px-6 flex gap-14 flex-col md:gap-32 md:px-0" >
-        {boisData[language].bois.map((bois, index) => (
+        {  overlayDataObj[language]?.bois.map((bois, index) => (
           <div     {...getAosProps()}
             ref={(ref) => {
               contentRefs.current[index] = ref;
@@ -181,7 +194,7 @@ const getAosProps = () => {
               <div ref={(ref) => {
                   opacityRefs.current[index] = ref;
                 }} className="flex flex-col text-opacity-white md:opacity-20">
-                <p className="text-16px font-light md:text-32px">{bois.type}</p>
+                <p className="text-16px font-light md:text-32px uppercase">{bois.type}</p>
                 <div className="block md:flex md:items-end">
                   <h4 className="text-40px font-thin md:text-132px">
                     {bois.densite}

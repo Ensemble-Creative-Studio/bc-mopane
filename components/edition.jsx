@@ -20,7 +20,12 @@ export default function Edition({ editionData }) {
   const instrument2Ref = useRef(null);
   const instrument3Ref = useRef(null);
 
+  const overlayDataObj = {};
+  for (let i = 0; i < editionData.length; i++) {
+    const entry = editionData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
 
+  }
   const renderText = (textArray, index) => {
     return (
       <div data-aos="fade-in-right"  data-aos-duration='1000' data-aos-easing="new-easing"  data-aos-offset="350"  data-aos-once="true"  ref={(ref) => (contentRefs.current[index] = ref)} key={index}>
@@ -167,7 +172,7 @@ export default function Edition({ editionData }) {
     <div ref={editionContainerRef}>
       <div className="flex items-center h-screen edition text-28px md:text-64px big:text-96px-edition-big">
         <div className="relative  text-soft-white ESFace font-extralight grid grid-cols-6 gap-6 px-6 md:grid-cols-12 md:px-36 md:gap-12">
-          {editionData[language].editionText.map((block, index) => (
+          {  overlayDataObj[language]?.editionText.map((block, index) => (
             <div className="col-start-3 col-end-7 md:col-start-5 md:col-end-12" key={block._key}>
               {renderText(block.children, index)}
             </div>

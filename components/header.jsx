@@ -9,11 +9,17 @@ import logo from "../public/logo.svg";
 import icon from "../public/icon.svg";
 import v from "../public/v.svg";
 import v2 from "../public/v-2.svg";
+
 export default function Header({ headerData }) {
   const [hideHeader, setHideHeader] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const { language, setLanguage } = useContext(AnimationContext);
+  const overlayDataObj = {};
+  for (let i = 0; i < headerData.length; i++) {
+    const entry = headerData[i];
+    overlayDataObj[entry.__i18n_lang] = entry;
 
+  }
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
@@ -29,23 +35,15 @@ export default function Header({ headerData }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLanguageChange = (languageIndex) => {
-    setLanguage(languageIndex);
+
+
+  const handleLanguageChange = (languageCode) => {
+    setLanguage(languageCode);
     setShowOverlay(false);
+   
   };
 
-  const languageText = {
-    0: {
-      revendeurMobile: headerData[0].revendeurMobile,
-      urlRevendeur: headerData[0].urlRevendeur,
-    },
-    1: {
-      revendeurMobile: headerData[1].revendeurMobile,
-      urlRevendeur: headerData[1].urlRevendeur,
-    },
-  };
 
-  const { revendeurMobile, urlRevendeur } = languageText[language];
 
   return (
     <div
@@ -60,16 +58,16 @@ export default function Header({ headerData }) {
           transition: "transform 0.2s ease",
         }}
       >
-        <Link target="_blank" href={urlRevendeur} className="flex-1 block md:hidden">
-          {revendeurMobile}
+        <Link target="_blank" href={overlayDataObj[language]?.urlRevendeur} className="flex-1 block md:hidden">
+          {overlayDataObj[language]?.revendeurMobile}
           
         </Link>
         <Link
         target="_blank"
-          href={urlRevendeur}
+          href={overlayDataObj[language]?.urlRevendeur}
           className="flex-1 hidden md:block md:relative md:-top-10"
         >
-          {revendeurMobile}
+          {overlayDataObj[language]?.revendeurMobile}
         </Link>
         <div className="logo w-28 h-28 md:h-48 md:w-48 ">
           <Image
@@ -91,40 +89,74 @@ export default function Header({ headerData }) {
           />
           {showOverlay && (
             <div className="language-overlay absolute bg-black flex flex-col">
-                       <div className="flex">
-                <p
-                  onClick={() => handleLanguageChange(1)}
-                  className={language === 1 ? "active" : ""}
-                  style={{ opacity: language === 1 ? 1 : 0.3 }}
-                >
-                  English
-                </p>
-                {language === 1 && (
-                  <Image
+             <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("en")}
+                className={language === 'en' ? "active" : ""}
+                style={{ opacity: language === 'en' ? 1 : 0.3 }}
+              >
+                English
+              </p>
+              {language === 'en' && (
+                <Image
                   className="w-4 h-4 ml-2 object-contain"
-                    priority
-                    src={v}
-                    alt="Logo Buffet Crampon"
-                  />
-                )}
-              </div>
-              <div className="flex">
-                <p
-                  onClick={() => handleLanguageChange(0)}
-                  className={language === 0 ? "active" : ""}
-                  style={{ opacity: language === 0 ? 1 : 0.3 }}
-                >
-                  Français
-                </p>
-                {language === 0 && (
-                  <Image
-                    className="w-4 h-4 ml-2 object-contain"
-                    priority
-                    src={v}
-                    alt="Logo Buffet Crampon"
-                  />
-                )}
-              </div>
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
+            <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("fr")}
+                className={language === 'fr' ? "active" : ""}
+                style={{ opacity: language === 'fr' ? 1 : 0.3 }}
+              >
+                Français
+              </p>
+              {language === 'fr' && (
+                <Image
+                  className="w-4 h-4 ml-2 object-contain"
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
+            <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("de")}
+                className={language === 'de' ? "active" : ""}
+                style={{ opacity: language === 'de' ? 1 : 0.3 }}
+              >
+                Deutsch
+              </p>
+              {language === 'de' && (
+                <Image
+                  className="w-4 h-4 ml-2 object-contain"
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
+            <div className="flex">
+              <p
+                onClick={() => handleLanguageChange("ja")}
+                className={language === 'ja' ? "active" : ""}
+                style={{ opacity: language === 'ja' ? 1 : 0.3 }}
+              >
+                日本
+              </p>
+              {language === 'ja' && (
+                <Image
+                  className="w-4 h-4 ml-2 object-contain"
+                  priority
+                  src={v}
+                  alt="Logo Buffet Crampon"
+                />
+              )}
+            </div>
      
             </div>
           )}
