@@ -62,31 +62,34 @@ export default function Overlay({ overlayData }) {
           <p className="text-14px-overlay text-center pb-8 pt-12 px-6 text-white md:widthoverlay md:text-16pxCustomline md:pt-24">
             {overlayDataObj[language]?.text}
           </p>
-          <div className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
+          <div 
+             onClick={() => handleAudioButtonClick(0)}
+          className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <div className="relative overflow-hidden rollupHover border md:hover:bg-soft-white md:hover:text-black ">
             <p
               className="audio  text-center text-12px font-normal text-soft-white uppercase  p-6 md:text-14px md:py-8 md:px-12  md:cursor-pointer"
-              onClick={() => handleAudioButtonClick(0)}
+           
             >
               {overlayDataObj[language]?.buttonMute}
             </p>
             <p
               className="audio  text-center text-12px font-normal hidden md:block uppercase  p-6 md:text-14px md:py-8 md:px-12 text-black   md:cursor-pointer md:absolute "
-              onClick={() => handleAudioButtonClick(0)}
+    
             >
               {overlayDataObj[language]?.buttonMute}
             </p>
             </div>
-        <div className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
+        <div
+           onClick={() => handleAudioButtonClick(1)} className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
         <p
               className="audio text-center text-12px font-normal   uppercase  p-6 md:text-14px md:py-8 md:px-12  text-black  md:cursor-pointer"
-              onClick={() => handleAudioButtonClick(1)}
+           
             >
               {overlayDataObj[language]?.button}
             </p>
         <p
               className="audio text-center text-12px font-normal  uppercase  p-6 md:text-14px md:py-8 md:px-12  text-soft-white  md:cursor-pointer absolute hidden md:block"
-              onClick={() => handleAudioButtonClick(1)}
+            
             >
               {overlayDataObj[language]?.button}
             </p>
