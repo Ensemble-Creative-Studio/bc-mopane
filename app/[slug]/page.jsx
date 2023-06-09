@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -9,8 +9,6 @@ import { groq } from "next-sanity";
 import logo from "../../public/logo-black.svg";
 import icon from "../../public/icon.svg";
 import chevron from "../../public/chevron.svg";
-import { AnimationContext } from "../../components/AnimationContext";
-
 const renderText = (block) => {
   return block.children.map((child) => {
     if (child.marks && child.marks.includes("41335c562c9a")) {
@@ -25,8 +23,7 @@ const renderText = (block) => {
 };
 
 export default async function Page() {
-  const { language, setLanguage } = useContext(AnimationContext);
-
+  
   const pathname = usePathname();
   const url = pathname.split("/").pop();
   useEffect(() => {
@@ -39,16 +36,7 @@ export default async function Page() {
 
   const querylink = groq`*[_type == 'pageFooter'] `;
   const pageData = await client.fetch(querylink);
-
-  const overlayDataObj = {};
-
-  for (let i = 0; i < pageData.length; i++) {
-    const entry = pageData[i];
-    if (!overlayDataObj[entry.__i18n_lang]) {
-      overlayDataObj[entry.__i18n_lang] = [];
-    }
-    overlayDataObj[entry.__i18n_lang].push(entry);
-  }
+  console.log(pageData);
   return (
     <>
       <header className="text-10px flex justify-between items-center h-36 text-soft-black uppercase px-6  w-full bg-white  md:text-11px md:px-12 md:h-60 sticky top-0">
@@ -85,7 +73,7 @@ export default async function Page() {
       </header>
       <div className="md:grid grid-cols-12 md:pr-36">
         <div className="py-12 md:col-span-3 md:py-0 md:pl-12 ">
-          { overlayDataObj[language]?.map((page) => (
+          {pageData.map((page) => (
             <div className="px-6 py-2 " key={page._id}>
               <Link
                 className="text-soft-black text-12px uppercase "

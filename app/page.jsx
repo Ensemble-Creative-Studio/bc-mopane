@@ -46,7 +46,7 @@ export default async function Home() {
   const pageData = await getPage();
   return (
     <div className="smooth-scroller" data-scroll-section>
-      {/* <AnimationProvider> */}
+      <AnimationProvider>
         <div className="relative z-20 mb-52 md:mb-40">
           <div className="background"></div>
           <Header headerData={headerData} />
@@ -62,7 +62,7 @@ export default async function Home() {
           <Showroom showroomData={showroomData}></Showroom>
         </div>
         <Footer footerData={footerData} pageData={pageData} />
-      {/* </AnimationProvider> */}
+      </AnimationProvider>
     </div>
   );
 }
