@@ -357,10 +357,7 @@ color: #FCFBF8;
   overflow: visible !important;
 }
 
-.rollupHover:hover p{
-  transform: translateY(-100%);
-  transition: 0.2s ease all;
-}
+
 .rollupHover p{
   transform: translateY(0%);
   transition: 0.2s ease all;
@@ -418,6 +415,10 @@ color: #FCFBF8;
   .radius {
     border-radius: 1.5%;
     aspect-ratio: 1.26;
+  }
+  .rollupHover:hover p{
+    transform: translateY(-100%);
+    transition: 0.2s ease all;
   }
 }
 @media (min-width: 1600px) {
