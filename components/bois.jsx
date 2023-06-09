@@ -159,7 +159,7 @@ const getAosProps = () => {
     };
   }
 }
-console.log(imageOpacityRefs)
+
   return (
     <div ref={editionContainerRef} className="h-screen bg-soft-black md:min-h-screen md:h-auto md:pb-40">
       <div className="pt-36 text-soft-white px-6 pb-16 md:px-36 md:grid md:grid-cols-12 md:gap-12 md:pb-64 ">

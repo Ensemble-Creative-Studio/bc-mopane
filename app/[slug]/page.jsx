@@ -36,7 +36,7 @@ export default async function Page() {
 
   const querylink = groq`*[_type == 'pageFooter'] `;
   const pageData = await client.fetch(querylink);
-  console.log(pageData);
+
   return (
     <>
       <header className="text-10px flex justify-between items-center h-36 text-soft-black uppercase px-6  w-full bg-white  md:text-11px md:px-12 md:h-60 sticky top-0">
