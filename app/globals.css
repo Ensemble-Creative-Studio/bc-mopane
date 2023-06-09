@@ -308,10 +308,11 @@ body[data-aos-easing="new-easing"] [data-aos],
   align-items: flex-end;
   text-align: center;
   border-radius: 6px;
-  top: -1.2rem;
-  right: -0.5rem;
+
+  top: 1.8rem;
+  right: 0.5rem;
 }
-.language-overlay {
+/* .language-overlay {
   background: rgba(50, 49, 47, 0.5);
 
   backdrop-filter: blur(16px);
@@ -322,7 +323,7 @@ body[data-aos-easing="new-easing"] [data-aos],
   border-radius: 6px;
   top: -1.2rem;
   right: -0.5rem;
-}
+} */
 .icon-langue.overlay{
   top: 3.9rem;
 }
@@ -419,6 +420,11 @@ color: #FCFBF8;
   .rollupHover:hover p{
     transform: translateY(-100%);
     transition: 0.2s ease all;
+  }
+  .language-overlay {
+
+    top: -1.2rem;
+    right: -0.5rem;
   }
 }
 @media (min-width: 1600px) {
