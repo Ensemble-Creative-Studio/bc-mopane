@@ -45,8 +45,8 @@ export default async function Home() {
   // Get the pageFooters array from the footerData
   const pageData = await getPage();
   return (
-    <div>
-      <AnimationProvider>
+    <div className="smooth-scroller" data-scroll-section>
+      {/* <AnimationProvider> */}
         <div className="relative z-20 mb-52 md:mb-40">
           <div className="background"></div>
           <Header headerData={headerData} />
@@ -62,7 +62,7 @@ export default async function Home() {
           <Showroom showroomData={showroomData}></Showroom>
         </div>
         <Footer footerData={footerData} pageData={pageData} />
-      </AnimationProvider>
+      {/* </AnimationProvider> */}
     </div>
   );
 }

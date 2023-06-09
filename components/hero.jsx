@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef, useContext } from "react";
-
+import { useLocomotiveScroll } from 'react-locomotive-scroll'
 import { AnimationContext } from "./AnimationContext";
 export default function Hero({ heroData }) {
+  const { scroll } = useLocomotiveScroll()
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [progresses, setProgresses] = useState([]);
   const videoRefs = useRef([]);

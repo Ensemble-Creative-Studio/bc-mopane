@@ -9,8 +9,9 @@ import divine from "../public/instruments/DIVINE.png";
 import legende from "../public/instruments/LEGENDE.png";
 import  r13 from "../public/instruments/R13.png";
 import { AnimationContext } from "./AnimationContext";
-
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 export default function Edition({ editionData }) {
+  const { scroll } = useLocomotiveScroll()
   const { language, setLanguage } = useContext(AnimationContext);
   const editionContainerRef = useRef(null);
   const contentRefs = useRef([]);
@@ -70,6 +71,7 @@ export default function Edition({ editionData }) {
     const pinTrigger = ScrollTrigger.create({
       trigger: editionContainer,
       start: "top top",
+      // scroller:'.smooth-scroller',
       pin: true,
       end: "bottom+=800px",
       pinSpacing: true,
@@ -81,6 +83,7 @@ export default function Edition({ editionData }) {
       scrollTrigger: {
         trigger: editionContainer,
         scrub: false,
+        // scroller:'.smooth-scroller',
         start: "top top",
         end: "bottom+=800px", // Use the same "end" as the pinning ScrollTrigger        markers: true,
         onUpdate: (self) => {

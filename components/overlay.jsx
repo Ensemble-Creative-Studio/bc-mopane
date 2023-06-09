@@ -25,7 +25,8 @@ export default function Overlay({ overlayData }) {
     const entry = overlayData[i];
     overlayDataObj[entry.__i18n_lang] = entry;
   }
-  const handleAudioButtonClick = (soundIndex) => {
+  const handleAudioButtonClick = (soundIndex, event) => {
+    event.stopPropagation(); // Add this line
     setIsAnimating(true);
     overlayRef.current.classList.add("removeOpacity");
     enterUpRef.current.classList.add("fade-out-up");
@@ -33,12 +34,14 @@ export default function Overlay({ overlayData }) {
     document.querySelector("body").style.overflow = "auto";
     document.querySelector("main").style.overflowX = "hidden";
     setSound(soundIndex);
-  };
+    console.log(soundIndex)
+};
+
   const handleLanguageChange = (languageCode) => {
     setLanguage(languageCode);
     setShowOverlay(false);
   };
-  const handleSoundChange = (soundIndex) => {};
+
   return (
     <div
       ref={overlayRef}
@@ -63,7 +66,7 @@ export default function Overlay({ overlayData }) {
             {overlayDataObj[language]?.text}
           </p>
           <div 
-             onClick={() => handleAudioButtonClick(0)}
+             onClick={(e) => handleAudioButtonClick(0,e)}
           className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <div className="relative overflow-hidden rollupHover border md:hover:bg-soft-white md:hover:text-black ">
             <p
@@ -80,7 +83,7 @@ export default function Overlay({ overlayData }) {
             </p>
             </div>
         <div
-           onClick={() => handleAudioButtonClick(1)} className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
+           onClick={(e) => handleAudioButtonClick(1,e)} className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
         <p
               className="audio text-center text-12px font-normal   uppercase  p-6 md:text-14px md:py-8 md:px-12  text-black  md:cursor-pointer"
            
