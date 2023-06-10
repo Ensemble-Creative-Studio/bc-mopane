@@ -1,7 +1,7 @@
 
-
+'use client'
 import './globals.css'
-
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 
 export const metadata = {
@@ -16,8 +16,9 @@ export default function RootLayout({
     <html>
     <head></head>
     <body className='overflow-hidden'>
- 
-      <main className='overflow-x-hidden'>{children}</main>
+    <ReactLenis root options={{ lerp: 0.08, wheelMultiplier: 0.8}}>
+      <main  className='overflow-x-hidden'>{children}</main>
+      </ReactLenis>
     </body>
       </html>
   )
