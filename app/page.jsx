@@ -11,7 +11,6 @@ import Specifications from "../components/specifications";
 import Pedigre from "../components/pedigre";
 import Showroom from "../components/showroom";
 import Footer from "../components/footer";
-
 import { AnimationProvider } from "../components/AnimationContext";
 import { getHeader } from "../sanity/sanity-util";
 import { getHero } from "../sanity/sanity-util";
