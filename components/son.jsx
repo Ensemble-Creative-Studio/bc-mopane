@@ -338,7 +338,7 @@ useEffect(() => {
               src={video.url}
               muted={isMuted}
               loop
-              playsInline
+              playsInline ={true}
               autoPlay={false}
               controls={false}
             />
