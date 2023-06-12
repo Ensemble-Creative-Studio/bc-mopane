@@ -329,10 +329,10 @@ useEffect(() => {
           ))}
         </div>
         <div className="absolute top-0 h-full w-full  ">
-          {/* <div className="video-son"></div> */}
+          <div className="video-son"></div>
           <video
               ref={(ref) => (videoRefs.current[0] = ref)}
-              className="object-cover video-son h-full absolute top-0 left-0 opacity-0 z-0 w-full  "
+              className="object-cover video-safari h-full absolute top-0 left-0 opacity-0 z-0 w-full  "
               key={'ddd'}
               src={sonData[0].videoSon[0].url}
               muted={isMuted}
