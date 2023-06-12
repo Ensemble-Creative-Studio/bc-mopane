@@ -34,7 +34,7 @@ export default function Overlay({ overlayData }) {
     document.querySelector("body").style.overflow = "auto";
     document.querySelector("main").style.overflowX = "hidden";
     setSound(soundIndex);
-
+console.log(soundIndex)
 };
 
   const handleLanguageChange = (languageCode) => {
