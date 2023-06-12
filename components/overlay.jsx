@@ -26,7 +26,7 @@ export default function Overlay({ overlayData }) {
     overlayDataObj[entry.__i18n_lang] = entry;
   }
   const handleAudioButtonClick = (soundIndex, event) => {
-    event.stopPropagation(); // Add this line
+
     setIsAnimating(true);
     overlayRef.current.classList.add("removeOpacity");
     enterUpRef.current.classList.add("fade-out-up");
@@ -66,7 +66,7 @@ console.log(soundIndex)
             {overlayDataObj[language]?.text}
           </p>
           <div 
-             onClick={(e) => handleAudioButtonClick(0,e)}
+    
           className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <div className="relative overflow-hidden rollupHover border md:hover:bg-soft-white md:hover:text-black ">
             <p
