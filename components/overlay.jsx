@@ -35,7 +35,19 @@ export default function Overlay({ overlayData }) {
   
     const soundIndex = event.target.getAttribute("data-sound-index");
     setSound(parseInt(soundIndex, 10));
+  
+    // New code starts here
+    const videoSound = document.querySelector(".video-sound");
+    if (videoSound) {
+      if (soundIndex === "1") { // If you want to check for other indices, you can add them here
+        videoSound.play(); // This plays the video
+      } else {
+        videoSound.pause(); // This pauses the video
+        videoSound.currentTime = 0; // This resets the video to the beginning
+      }
+    }
   };
+  
   
 
   const handleLanguageChange = (languageCode) => {
