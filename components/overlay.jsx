@@ -37,10 +37,13 @@ export default function Overlay({ overlayData }) {
     setSound(parseInt(soundIndex, 10));
   
     // New code starts here
-    const videoSound = document.querySelector(".video-sound");
+    const videoSound = document.querySelector(".video-son");
+    console.log(videoSound)
     if (videoSound) {
+
       if (soundIndex === "1") { // If you want to check for other indices, you can add them here
         videoSound.play(); // This plays the video
+        console.log(videoSound)
       } else {
         videoSound.pause(); // This pauses the video
         videoSound.currentTime = 0; // This resets the video to the beginning
