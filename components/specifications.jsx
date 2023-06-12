@@ -185,8 +185,8 @@ export default function Specifications({ specificationData }) {
         </h3>
 
         <div className="navigation-wrapper pb-10 md:px-72 2xl:px-96 md:pb-16">
-          <div ref={sliderRefHorizontal} className="keen-slider OverflowVisible ">
-            <div className="keen-slider__slide px-6 number-slide1 py-12 md:py-8">
+          <div ref={sliderRefHorizontal} className="keen-slider OverflowVisible py-12 md:py-8 ">
+            <div className="keen-slider__slide px-6 number-slide1 ">
               <div style={scaleStyle(0)}>
                 <Image
                   className="object-cover h-full w-full"
