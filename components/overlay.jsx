@@ -25,17 +25,18 @@ export default function Overlay({ overlayData }) {
     const entry = overlayData[i];
     overlayDataObj[entry.__i18n_lang] = entry;
   }
-  const handleAudioButtonClick = (soundIndex, event) => {
-
+  const handleAudioButtonClick = (event) => {
     setIsAnimating(true);
     overlayRef.current.classList.add("removeOpacity");
     enterUpRef.current.classList.add("fade-out-up");
     enterDownRef.current.classList.add("fade-out-down");
     document.querySelector("body").style.overflow = "auto";
     document.querySelector("main").style.overflowX = "hidden";
-    setSound(soundIndex);
-console.log(soundIndex)
-};
+  
+    const soundIndex = event.target.getAttribute("data-sound-index");
+    setSound(parseInt(soundIndex, 10));
+  };
+  
 
   const handleLanguageChange = (languageCode) => {
     setLanguage(languageCode);
@@ -66,10 +67,12 @@ console.log(soundIndex)
             {overlayDataObj[language]?.text}
           </p>
           <div 
-    
+         
           className="flex justify-center gap-6 flex-col-reverse md:flex-row px-6 md:px-0">
             <div className="relative overflow-hidden rollupHover border md:hover:bg-soft-white md:hover:text-black ">
             <p
+              onClick={handleAudioButtonClick}
+              data-sound-index={0}
               className="audio  text-center text-12px font-normal text-soft-white uppercase  p-6 md:text-14px md:py-8 md:px-12  md:cursor-pointer"
            
             >
@@ -77,22 +80,25 @@ console.log(soundIndex)
             </p>
             <p
               className="audio  text-center text-12px font-normal hidden md:block uppercase  p-6 md:text-14px md:py-8 md:px-12 text-black   md:cursor-pointer md:absolute "
-    
+              onClick={handleAudioButtonClick}
+              data-sound-index={0}
             >
               {overlayDataObj[language]?.buttonMute}
             </p>
             </div>
         <div
-           onClick={(e) => handleAudioButtonClick(1,e)} className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
+         className="relative overflow-hidden rollupHover border bg-soft-white md:hover:bg-soft-black ">
         <p
               className="audio text-center text-12px font-normal   uppercase  p-6 md:text-14px md:py-8 md:px-12  text-black  md:cursor-pointer"
-           
+              onClick={handleAudioButtonClick}
+              data-sound-index={1}
             >
               {overlayDataObj[language]?.button}
             </p>
         <p
               className="audio text-center text-12px font-normal  uppercase  p-6 md:text-14px md:py-8 md:px-12  text-soft-white  md:cursor-pointer absolute hidden md:block"
-            
+              onClick={handleAudioButtonClick}
+              data-sound-index={1}
             >
               {overlayDataObj[language]?.button}
             </p>
