@@ -24,6 +24,7 @@ export default function Overlay({ overlayData }) {
   for (let i = 0; i < overlayData.length; i++) {
     const entry = overlayData[i];
     overlayDataObj[entry.__i18n_lang] = entry;
+    
   }
   const handleAudioButtonClick = (event) => {
     setIsAnimating(true);

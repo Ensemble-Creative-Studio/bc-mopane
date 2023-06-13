@@ -132,7 +132,7 @@ useEffect(() => {
           isOffVisible ? "inline" : "hidden"
         }`}
           priority
-          src={off}
+          src={on}
           alt="son on"
           onClick={handleAudioButtonClick}
         />
@@ -142,7 +142,7 @@ useEffect(() => {
                 isOnVisible ? "inline" : "hidden"
               }`}
           priority
-          src={on}
+          src={off}
           alt="son off"
           onClick={handleAudioButtonClick}
         />
