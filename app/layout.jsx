@@ -2,7 +2,7 @@
 'use client'
 import './globals.css'
 import { ReactLenis } from "@studio-freight/react-lenis";
-
+import Script from 'next/script';
 
  const metadata = {
   title: 'Buffet Crampon - Mopane',
@@ -15,6 +15,8 @@ export default function RootLayout({
   return (
     <html>
     <head>
+    <Script src="https://cdn.usefathom.com/script.js" data-site="FIDTJTFD" defer />
+
     <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
     </head>
