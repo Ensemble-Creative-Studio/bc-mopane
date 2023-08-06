@@ -6,9 +6,9 @@ import Link from "next/link";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { urlForImage } from "../sanity/lib/image";
-import tosca from "../public/instruments/Tosca-Mopane.png";
-import legende from "../public/instruments/legende90.png";
-import r13 from "../public/instruments/R1390.png";
+import tosca from "../public/instruments/Tosca-Mopane.webp";
+import legende from "../public/instruments/legende90.webp";
+import r13 from "../public/instruments/R1390.webp";
 import { AnimationContext } from "./AnimationContext";
 
 function ThumbnailPlugin(mainRef, detailsRef) {

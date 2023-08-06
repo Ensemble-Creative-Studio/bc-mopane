@@ -5,9 +5,9 @@ import { gsap } from "gsap";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import divine from "../public/instruments/DIVINE.png";
-import legende from "../public/instruments/LEGENDE.png";
-import  r13 from "../public/instruments/R13.png";
+import divine from "../public/instruments/DIVINE.webp";
+import legende from "../public/instruments/LEGENDE.webp";
+import  r13 from "../public/instruments/R13.webp";
 import { AnimationContext } from "./AnimationContext";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 export default function Edition({ editionData }) {
