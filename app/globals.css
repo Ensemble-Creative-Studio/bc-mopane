@@ -79,7 +79,7 @@ header.home {
 }
 a,
 p {
-  font-family: "futura";
+  font-family: "futura", "Helvetica", sans-serif;
 }
 
 h1,

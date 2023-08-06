@@ -184,21 +184,24 @@ export default function Edition({ editionData }) {
             <Image
               ref={instrument1Ref}
               className="absolute w-full object-contain h-full instrument1 opacity-0"
-              priority
+              height={400}
+              width={800}
               src={legende}
               alt="Logo Buffet Crampon"
             />
             <Image
               ref={instrument2Ref}
               className="absolute w-full object-contain h-full instrument2 opacity-0"
-              priority
+              height={400}
+              
               src={divine}
               alt="Logo Buffet Crampon"
             />
             <Image
               ref={instrument3Ref}
               className="absolute h-full w-full object-contain instrument3 opacity-0"
-              priority
+              height={400}
+              
               src={r13}
               alt="Logo Buffet Crampon"
             />

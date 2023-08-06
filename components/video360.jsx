@@ -144,7 +144,7 @@ export default function Video({ video360Data }) {
             <video
               ref={videoRef}
               className="object-cover heightCustom absolute top-0 left-0 -z-10 videoHero"
-              src="/videos/3D.mp4"
+              src="https://player.vimeo.com/progressive_redirect/playback/852102209/rendition/720p/file.mp4?loc=external&signature=2c1c5014ce5cff1680e36f5555c49d909431cd35e9fbdd7593e877e8ea5d35f2"
               muted
               playsInline
               controls={false}
