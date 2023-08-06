@@ -186,7 +186,7 @@ const getAosProps = () => {
                 <Image
            
                   className="flex-1 h-full w-full object-contain md:h-72 md:w-72 border-radius"
-                  priority
+                   
                   src={images[index]}
                   alt="Logo Buffet Crampon"
                 />

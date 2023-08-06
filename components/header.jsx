@@ -72,7 +72,7 @@ export default function Header({ headerData }) {
         <div className="logo w-28 h-28 md:h-48 md:w-48 ">
           <Image
             className="w-full h-full object-contain"
-            priority
+             
             src={logo}
             alt="Logo Buffet Crampon"
           />
@@ -100,7 +100,7 @@ export default function Header({ headerData }) {
               {language === 'en' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -117,7 +117,7 @@ export default function Header({ headerData }) {
               {language === 'fr' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -134,7 +134,7 @@ export default function Header({ headerData }) {
               {language === 'de' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -151,7 +151,7 @@ export default function Header({ headerData }) {
               {language === 'ja' && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />

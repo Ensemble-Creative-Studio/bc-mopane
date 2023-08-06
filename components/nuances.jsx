@@ -122,7 +122,7 @@ export default function Nuances({ nuancesData }) {
                   alt="Details instruments"
                   width={1560}
                   height={1200}
-                  priority
+                   
                 />
               )}
               {slide.mediaType === "video" && slide.video && (

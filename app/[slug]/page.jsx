@@ -44,7 +44,7 @@ export default async function Page() {
           <div className="flex">
             <Image
               className="w-4 h-4 object-contain"
-              priority
+               
               src={chevron}
               alt="Logo Buffet Crampon"
             />
@@ -55,7 +55,7 @@ export default async function Page() {
         <div className="logo w-28 h-28 md:h-48 md:w-48 ">
           <Image
             className="w-full h-full object-contain"
-            priority
+             
             src={logo}
             alt="Logo Buffet Crampon"
           />

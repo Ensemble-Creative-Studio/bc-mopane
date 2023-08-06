@@ -131,7 +131,7 @@ useEffect(() => {
         className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 opacity-0 ${
           isOffVisible ? "inline" : "hidden"
         }`}
-          priority
+           
           src={on}
           alt="son on"
           onClick={handleAudioButtonClick}
@@ -141,7 +141,7 @@ useEffect(() => {
               className={` w-10 h-10 object-contain ml-4 md:w-20 md:h-20 opacity-0 ${
                 isOnVisible ? "inline" : "hidden"
               }`}
-          priority
+           
           src={off}
           alt="son off"
           onClick={handleAudioButtonClick}

@@ -74,7 +74,7 @@ export default function Overlay({ overlayData }) {
         >
           <Image
             className=""
-            priority
+             
             height={130}
             width={130}
             src={logo}
@@ -148,7 +148,7 @@ export default function Overlay({ overlayData }) {
               {language === "en" && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -165,7 +165,7 @@ export default function Overlay({ overlayData }) {
               {language === "fr" && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -182,7 +182,7 @@ export default function Overlay({ overlayData }) {
               {language === "de" && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />
@@ -199,7 +199,7 @@ export default function Overlay({ overlayData }) {
               {language === "ja" && (
                 <Image
                   className="w-4 h-4 ml-2 object-contain"
-                  priority
+                   
                   src={v}
                   alt="Logo Buffet Crampon"
                 />

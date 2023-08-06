@@ -192,7 +192,7 @@ export default function Specifications({ specificationData }) {
                   className="object-cover h-full w-full"
                   src={tosca}
                   alt="Instruments"
-            priority
+             
                 />
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function Specifications({ specificationData }) {
                   className="object-cover h-full w-full"
                   src={legende}
                   alt="Instruments"
-                  priority
+                   
                 />
               </div>
             </div>
@@ -212,7 +212,7 @@ export default function Specifications({ specificationData }) {
                   className="object-cover h-full w-full"
                   src={r13}
                   alt="Instruments"
-                  priority
+                   
                 />
               </div>
             </div>
